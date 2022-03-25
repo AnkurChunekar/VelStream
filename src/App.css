@@ -49,3 +49,15 @@
   font-size: 1.2rem;
   margin: 1rem;
 } */
+
+:root {
+  --dark-bg: #0e131f;
+  --dark-gray-bg: #19212c;
+  /* --white-font-color: #f1f1f1; */
+  --white-font-color: #e2e2e2;
+}
+
+body {
+ background-color: var(--dark-bg);
+ color: var(--white-font-color);
+}

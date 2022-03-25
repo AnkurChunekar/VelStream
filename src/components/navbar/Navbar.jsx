@@ -6,7 +6,7 @@ export function Navbar() {
       <nav className="navigation">
         <div className="nav-brand">
           <i className="fas fa-bars ham-icon" id="ham-icon" />
-          <a className="brand-name">Velfit</a>
+          <a className="brand-name">VelStream</a>
         </div>
         <div className="navigation-ham-menu" id="navigation-ham-menu">
           <i className="fas fa-times" id="ham-close-icon" />
@@ -19,25 +19,17 @@ export function Navbar() {
         <div className="navigation-ham-bg" />
         <div className="nav-actions">
           <a>
-            <span className="icon-container badge-container">
-              <i id="nav-search-icon" className="fas fa-search icon" />
+            <i id="nav-search-icon" className="fas fa-search" />
+          </a>
+          <a>
+            <span className="icon-container badge-container user-profile">
+              AC
             </span>
           </a>
-          <a href="">
-            <i className="fas fa-user" />
+          <a>
+            <span className="icon-container badge-container">Logout <i class="fa-solid fa-caret-down"></i> </span>
           </a>
-          <a href="/pages/wishlist/wishlist.html">
-            <span className="icon-container badge-container">
-              <i className="fas fa-heart icon" />
-              <span className="icon-badge">2</span>
-            </span>
-          </a>
-          <a href="/pages/cart-management/cart-management.html">
-            <span className="icon-container badge-container">
-              <i className="fas fa-shopping-cart icon" />
-              <span className="icon-badge">2</span>
-            </span>
-          </a>
+
         </div>
       </nav>
       {/* Search bar starts */}
