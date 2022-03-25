@@ -22,14 +22,10 @@ export function Navbar() {
             <i id="nav-search-icon" className="fas fa-search" />
           </a>
           <a>
-            <span className="icon-container badge-container user-profile">
-              AC
+            <span className="icon-container badge-container">
+            <i class="fa-solid fa-user"></i>
             </span>
           </a>
-          <a>
-            <span className="icon-container badge-container">Logout <i class="fa-solid fa-caret-down"></i> </span>
-          </a>
-
         </div>
       </nav>
       {/* Search bar starts */}
