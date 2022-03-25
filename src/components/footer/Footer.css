@@ -6,8 +6,8 @@ a {
   }
   
   .footer {
-    color: var(--plain-white);
-    background-color: var(--dark-color);
+    color: inherit;
+    background-color: var(--dark-gray-bg);
     padding: 6rem;
   }
   
