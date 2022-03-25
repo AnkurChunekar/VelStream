@@ -1,0 +1,41 @@
+/* Main */
+
+.main-container {
+  margin: 4rem 0;
+  min-height: 60vh;
+}
+
+/* authentication component  */
+
+.authentication-container {
+  background-color: var(--secondary-bg);
+  border: solid 1.5px var(--border-color);
+  border-radius: var(--sm-radius);
+  max-width: 40rem;
+}
+
+.authentication-container a {
+  text-decoration: none;
+}
+
+.authentication-container .btn {
+  width: 100%;
+}
+
+.input-w-btn .input-btn:hover {
+  cursor: pointer;
+  background-color: var(--plain-white);
+  color: var(--plain-black);
+}
+
+.input-wrapper .input {
+  background-color: var(--primary-bg);
+  box-shadow: none;
+  color: inherit;
+  border: none;
+}
+
+.input-wrapper .input:focus {
+    outline: solid 1.5px white;
+}
+

@@ -50,14 +50,16 @@
   margin: 1rem;
 } */
 
+/* dt - dark theme, lt - light theme */
+
 :root {
-  --dark-bg: #0e131f;
-  --dark-gray-bg: #19212c;
-  /* --white-font-color: #f1f1f1; */
-  --white-font-color: #e2e2e2;
+  --primary-bg: #0e131f;
+  --secondary-bg: #19212c;
+  --font-color: #e2e2e2;
+  --border-color: #383838;
 }
 
 body {
- background-color: var(--dark-bg);
- color: var(--white-font-color);
+ background-color: var(--primary-bg);
+ color: var(--font-color);
 }

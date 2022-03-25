@@ -11,7 +11,8 @@ a {
   z-index: 10;
   padding: var(--spacing-md1);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  background-color: var(--dark-gray-bg);
+  background-color: var(--secondary-bg);
+  border-bottom: solid 1.5px var(--border-color);
 }
 
 .nav-actions .icon {
