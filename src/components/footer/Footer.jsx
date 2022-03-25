@@ -3,7 +3,7 @@ import "./Footer.css";
 export function Footer() {
   return (
     <>
-    <footer className="footer">
+    <footer className="footer dark">
       <div className="footer-container">
         <div className="row flex flex-wrap">
           <div className="footer-col">

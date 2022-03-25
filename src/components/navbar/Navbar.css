@@ -19,6 +19,17 @@ a {
   border-bottom: 1.5px solid var(--dt-border-color);
 }
 
+.navigation.dark .user-profile {
+  font-size: var(--font-size-h5);
+  border-radius: var(--round-radius);
+  border: solid 2px var(--dt-font-color);
+  padding: 0.7rem 0.5rem;
+}
+
+.navigation .user-profile {
+  border: solid 2px var(--dt-font-color);
+}
+
 .nav-actions .icon {
   font-size: 2rem;
   color: var(--dark-color);

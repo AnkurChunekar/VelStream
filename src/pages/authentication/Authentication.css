@@ -39,7 +39,7 @@
 .authentication-container.dark .input {
   background-color: var(--dt-primary-bg);
   box-shadow: none;
-  border: none;
+  border: solid 1.5px var(--dt-primary-bg);
   color: var(--dt-font-color);
 }
 
@@ -49,7 +49,7 @@
 
 .authentication-container.dark .input-btn {
   background-color: var(--dt-primary-bg);
-  border: none;
+  border: solid 1.5px var(--dt-primary-bg);
 }
 
 .authentication-container.dark .input-btn:hover {
