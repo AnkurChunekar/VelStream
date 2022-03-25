@@ -11,8 +11,12 @@ a {
   z-index: 10;
   padding: var(--spacing-md1);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  background-color: var(--secondary-bg);
-  border-bottom: solid 1.5px var(--border-color);
+}
+
+.navigation.dark {
+  box-shadow: none;
+  background-color: var(--dt-secondary-bg);
+  border-bottom: 1.5px solid var(--dt-border-color);
 }
 
 .nav-actions .icon {
@@ -55,17 +59,6 @@ a {
 .nav-actions .icon-badge {
   top: -15px;
   right: -5px;
-}
-
-.nav-actions {
-  color: inherit;
-}
-
-.nav-actions .user-profile {
-  border: solid 2px lightgray;
-  border-radius: var(--round-radius);
-  font-size: var(--font-size-h5);
-  padding: 0.7rem 0.6rem;
 }
 
 @media screen and (max-width: 768px) {

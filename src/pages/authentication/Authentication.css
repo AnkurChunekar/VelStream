@@ -8,9 +8,10 @@
 /* authentication component  */
 
 .authentication-container {
-  background-color: var(--secondary-bg);
-  border: solid 1.5px var(--border-color);
+  background-color: var(--plain-white);
+  border: solid 1px var(--plain-lightgray);
   border-radius: var(--sm-radius);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   max-width: 40rem;
 }
 
@@ -28,14 +29,29 @@
   color: var(--plain-black);
 }
 
-.input-wrapper .input {
-  background-color: var(--primary-bg);
+/* Dark Theme */
+
+.authentication-container.dark {
+  background-color: var(--dt-secondary-bg);
+  border: solid 1px var(--dt-border-color);
+}
+
+.authentication-container.dark .input {
+  background-color: var(--dt-primary-bg);
   box-shadow: none;
-  color: inherit;
+  border: none;
+  color: var(--dt-font-color);
+}
+
+.authentication-container.dark .input:focus {
+  border: solid 1.5px var(--dt-font-color);
+}
+
+.authentication-container.dark .input-btn {
+  background-color: var(--dt-primary-bg);
   border: none;
 }
 
-.input-wrapper .input:focus {
-    outline: solid 1.5px white;
+.authentication-container.dark .input-btn:hover {
+  color: inherit;
 }
-

@@ -3,7 +3,7 @@ import "./Navbar.css";
 export function Navbar() {
   return (
     <>
-      <nav className="navigation">
+      <nav className="navigation dark">
         <div className="nav-brand">
           <i className="fas fa-bars ham-icon" id="ham-icon" />
           <a className="brand-name">VelStream</a>

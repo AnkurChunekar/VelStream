@@ -1,13 +1,14 @@
 import "./App.css";
 import { Footer, Navbar } from "./components";
-import { Login } from "./pages";
+import { Login, Signup } from "./pages";
 
 
 function App() {
   return (
-    <div className="App">
+    <div className="App dark">
       <Navbar />
       <Login />
+      <Footer />
     </div>
   );
 }

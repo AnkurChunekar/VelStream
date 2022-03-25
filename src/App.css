@@ -53,13 +53,17 @@
 /* dt - dark theme, lt - light theme */
 
 :root {
-  --primary-bg: #0e131f;
-  --secondary-bg: #19212c;
-  --font-color: #e2e2e2;
-  --border-color: #383838;
+  --dt-primary-bg: #0e131f;
+  --dt-secondary-bg: #19212c;
+  --dt-font-color: #e2e2e2;
+  --dt-border-color: #383838;
 }
 
-body {
- background-color: var(--primary-bg);
- color: var(--font-color);
+.App.dark {
+ background-color: var(--dt-primary-bg);
+ color: var(--dt-font-color);
+}
+
+.transparent-bg {
+  background-color: transparent;
 }
