@@ -42,7 +42,7 @@ export function Login() {
           </a>
           .
         </p>
-        <a href="" className="primary-color-text center-align-text m-xxs m-rl0">
+        <a  className="primary-color-text center-align-text m-xxs m-rl0">
           Use Guest Credentials.
         </a>
       </form>

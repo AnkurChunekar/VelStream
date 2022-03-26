@@ -10,13 +10,13 @@ export function Footer() {
             <h4>Company</h4>
             <ul className="list-style-none">
               <li>
-                <a href="">About Us</a>
+                <a >About Us</a>
               </li>
               <li>
-                <a href="">Our Services</a>
+                <a >Our Services</a>
               </li>
               <li>
-                <a href="">FAQ</a>
+                <a >FAQ</a>
               </li>
             </ul>
           </div>
@@ -24,16 +24,16 @@ export function Footer() {
             <h4>Categories</h4>
             <ul className="list-style-none">
               <li>
-                <a href="">Weights</a>
+                <a >Weights</a>
               </li>
               <li>
-                <a href="">Equipments</a>
+                <a >Equipments</a>
               </li>
               <li>
-                <a href="">Accessories</a>
+                <a >Accessories</a>
               </li>
               <li>
-                <a href="">Supplements</a>
+                <a >Supplements</a>
               </li>
             </ul>
           </div>
@@ -41,29 +41,29 @@ export function Footer() {
             <h4>Our Shop</h4>
             <ul className="list-style-none">
               <li>
-                <a href="">Orders</a>
+                <a >Orders</a>
               </li>
               <li>
-                <a href="">Wishlist</a>
+                <a >Wishlist</a>
               </li>
               <li>
-                <a href="">Account</a>
+                <a >Account</a>
               </li>
             </ul>
           </div>
           <div className="footer-col">
             <h4>Follow Us</h4>
             <div className="social-links">
-              <a href="">
+              <a >
                 <i className="fa-brands fa-twitter" />
               </a>
-              <a href="">
+              <a >
                 <i className="fa-brands fa-linkedin" />
               </a>
-              <a href="">
+              <a >
                 <i className="fa-brands fa-github" />
               </a>
-              <a href="">
+              <a >
                 <i className="fa-brands fa-hashnode" />
               </a>
             </div>

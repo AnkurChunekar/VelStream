@@ -1,5 +1,5 @@
 import "./App.css";
-import { Footer, Navbar } from "./components";
+import { Navbar } from "./components";
 import { VideoListing } from "./pages";
 
 
