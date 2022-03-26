@@ -13,21 +13,17 @@ a {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+.navigation .brand-name {
+  font-weight: 300;
+  letter-spacing: var(--spacing-xxxs);
+  margin: 0 1.5rem;
+}
+
 .navigation.dark {
   box-shadow: none;
   background-color: var(--dt-secondary-bg);
   border-bottom: 1.5px solid var(--dt-border-color);
 }
-
-.navigation .fa-user {
-  border-radius: var(--round-radius);
-  padding: 0.65rem 0.75rem;
-}
-
-.navigation.dark .fa-user {
-  border: solid 2px var(--dt-font-color);
-}
-
 
 .nav-actions .icon {
   font-size: 2rem;
