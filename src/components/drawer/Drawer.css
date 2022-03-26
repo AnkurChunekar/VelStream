@@ -1,0 +1,29 @@
+.nav-drawer {
+  width: 250px;
+  height: 100%;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+}
+
+.nav-drawer.dark {
+  background-color: var(--dt-secondary-bg);
+  border-right: 1.5px solid var(--dt-border-color);
+}
+
+.nav-drawer .drawer-item {
+  display: flex;
+  column-gap: 2rem;
+  width: 100%;
+  padding: var(--spacing-s);
+  transition: background-color 0.3s ease;
+}
+
+.nav-drawer .drawer-item.active {
+  background-color: var(--dt-light-bg);
+}
+
+.nav-drawer .drawer-item:hover {
+  cursor: pointer;
+  background-color: var(--dt-light-bg);
+}
