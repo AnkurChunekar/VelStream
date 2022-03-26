@@ -1,13 +1,13 @@
 import "./App.css";
 import { Footer, Navbar } from "./components";
-import { Login, Signup } from "./pages";
+import { VideoListing } from "./pages";
 
 
 function App() {
   return (
     <div className="App dark">
       <Navbar />
-      <Login />
+      <VideoListing />
     </div>
   );
 }

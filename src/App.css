@@ -3,6 +3,7 @@
 :root {
   --dt-primary-bg: #0e131f;
   --dt-secondary-bg: #19212c;
+  --dt-light-bg: #303946;
   --dt-font-color: #e2e2e2;
   --dt-border-color: #383838;
 }
@@ -18,4 +19,16 @@
 
 .transparent-bg {
   background-color: transparent;
+}
+
+.fs-10px {
+  font-size: 1rem;
+}
+
+.fs-12px {
+  font-size: 1.2rem;
+}
+
+.fs-14px {
+  font-size: 1.4rem;
 }
