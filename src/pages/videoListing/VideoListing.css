@@ -1,0 +1,43 @@
+.vl-main {
+  height: calc(100vh - 72.5px);
+  overflow-y: auto;
+}
+
+.video-listing {
+  width: 100%;
+}
+
+.video-grid {
+  display: grid;
+  padding: 2rem;
+  column-gap: 2rem;
+  row-gap: 4rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.video-grid-wrapper {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.filter-container {
+  padding: 1rem 2rem;
+  border-bottom: solid 1.5px var(--dt-border-color);
+  background-color: var(--dt-secondary-bg);
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.filter-container .chip {
+  padding: 0.6rem 2rem;
+  border-radius: var(--round-radius);
+  background-color: var(--dt-light-bg);
+  color: inherit;
+  border: solid 1.5px var(--dt-border-color);
+}
+
+.scroller {
+  overflow: auto;
+}
