@@ -6,7 +6,7 @@ export function Navbar() {
       <nav className="navigation dark">
         <div className="nav-brand">
           <i className="fas fa-bars ham-icon" id="ham-icon" />
-          <a className="brand-name">VelStream</a>
+          <a href="https://ankurchunekar.netlify.app/" className="brand-name">VelStream</a>
         </div>
         <div className="navigation-ham-menu" id="navigation-ham-menu">
           <i className="fas fa-times" id="ham-close-icon" />
@@ -18,14 +18,14 @@ export function Navbar() {
         </div>
         <div className="navigation-ham-bg" />
         <div className="nav-actions">
-          <a>
+          <span className="m-xs" >
             <i id="nav-search-icon" className="fas fa-search" />
-          </a>
-          <a>
+          </span>
+          <span className="m-xs" >
             <span className="icon-container badge-container">
             <i class="fa-solid fa-user"></i>
             </span>
-          </a>
+          </span>
         </div>
       </nav>
       {/* Search bar starts */}
