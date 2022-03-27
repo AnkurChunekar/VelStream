@@ -1,0 +1,5 @@
+.playlist {
+  max-width: 450px;
+  margin: 1rem;
+  border: solid 1.5px var(--dt-border-color);
+}
