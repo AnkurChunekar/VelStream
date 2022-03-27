@@ -3,7 +3,7 @@ import { Drawer, VideoCard } from "../../components";
 
 export function VideoListing() {
   return (
-    <main className="flex vl-main">
+    <main className="flex page-container">
       <Drawer />
       <div className="video-listing">
         <div className="filter-container">

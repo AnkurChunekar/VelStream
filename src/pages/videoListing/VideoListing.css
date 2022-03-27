@@ -1,8 +1,3 @@
-.vl-main {
-  height: calc(100vh - 72.5px);
-  overflow-y: auto;
-}
-
 .video-listing {
   width: 100%;
 }
