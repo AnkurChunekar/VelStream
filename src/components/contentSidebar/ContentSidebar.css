@@ -1,0 +1,20 @@
+.content-sidebar {
+  max-width: 350px;
+  border-right: solid 1.5px var(--dt-border-color);
+  flex-shrink: 0;
+}
+
+.content-sidebar .banner {
+  position: relative;
+}
+
+.content-sidebar .text-overlay {
+  position: absolute;
+  color: var(--dt-font-color);
+  background-color: rgba(0, 0, 0, 0.6);
+  bottom: 5px;
+  right: 0;
+  left: 0;
+  text-align: center;
+  padding: 1.5rem 0;
+}

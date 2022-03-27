@@ -40,10 +40,10 @@ export function VideoCard() {
           onClick={handleVideoDrawerToggleClick}
           className="menu-btn fs-4 transparent-bg"
         >
-          <i class="fa-solid fa-ellipsis-vertical"></i>
+          <i className="fa-solid fa-ellipsis-vertical"></i>
         </button>
 
-        {/* tags and icons */}
+        {/* tags */}
 
         <div className="badge-container tag tag-dark tag-round-border">
           <span className="icon-badge">55:00</span>
@@ -54,19 +54,19 @@ export function VideoCard() {
           <div className="video-drawer-conatiner">
             <button className="drawer-row">
               <span>
-                <i class="fa-solid fa-list-check"></i>
+                <i className="fa-solid fa-list-check"></i>
               </span>
               <span className="m-xs m-tb0"> Save to playlist </span>
             </button>
             <button className="drawer-row">
               <span>
-                <i class="fa-regular fa-clock"></i>
+                <i className="fa-regular fa-clock"></i>
               </span>
               <span className="m-xs m-tb0"> Save to Watch Later </span>
             </button>
             <button className="drawer-row">
               <span>
-                <i class="fa-solid fa-thumbs-up"></i>
+                <i className="fa-solid fa-thumbs-up"></i>
               </span>
               <span className="m-xs m-tb0"> Add to liked Videos </span>
             </button>

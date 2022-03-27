@@ -13,8 +13,8 @@
 }
 
 .App.dark {
- background-color: var(--dt-primary-bg);
- color: var(--dt-font-color);
+  background-color: var(--dt-primary-bg);
+  color: var(--dt-font-color);
 }
 
 .transparent-bg {
@@ -31,4 +31,13 @@
 
 .fs-14px {
   font-size: 1.4rem;
+}
+
+.page-container {
+  height: calc(100vh - 72.5px);
+  overflow-y: auto;
+}
+
+.w-100pc {
+  width: 100%;
 }

@@ -23,7 +23,7 @@ export function Navbar() {
           </span>
           <span className="m-xs" >
             <span className="icon-container badge-container">
-            <i class="fa-solid fa-user"></i>
+            <i className="fa-solid fa-user"></i>
             </span>
           </span>
         </div>
