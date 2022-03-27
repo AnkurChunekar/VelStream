@@ -21,7 +21,7 @@ export function ContentSidebar({ pageTitle }) {
         <img
           className="profile-pic"
           src="https://i.picsum.photos/id/507/350/200.jpg?hmac=hlpv7jKjCuDSZfctg82iwrLnYS8hWlJB5yfaECifXjw"
-          alt="profile image"
+          alt="profile"
         />
         <span className="m-xxs m-tb0"> Ankur Chunekar </span>
       </div>
