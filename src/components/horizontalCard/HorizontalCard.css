@@ -1,0 +1,41 @@
+.horizontal-card {
+  border-bottom: solid 1.5px var(--dt-border-color);
+  width: 100%;
+  column-gap: 1rem;
+  position: relative;
+}
+
+.horizontal-card:hover {
+  background-color: var(--dt-light-bg);
+}
+
+.horizontal-card .thumbnail {
+  width: 110px;
+}
+
+.horizontal-card .banner {
+  position: relative;
+}
+
+.horizontal-card .tag {
+  position: absolute;
+  top: 35px;
+  right: 5px;
+  height: max-content;
+  width: max-content;
+  font-size: 10px;
+}
+
+.h-card-container {
+  flex-grow: 2;
+}
+
+.horizontal-card .delete-btn {
+  color: inherit;
+  margin-left: auto;
+  align-self: flex-start;
+  padding: 0.7rem 1rem;
+  border-radius: 999px;
+  border: solid 2px var(--dt-border-color);
+  background-color: var(--dt-primary-bg);
+}
