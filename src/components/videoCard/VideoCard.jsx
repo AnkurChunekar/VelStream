@@ -43,7 +43,7 @@ export function VideoCard() {
           <i class="fa-solid fa-ellipsis-vertical"></i>
         </button>
 
-        {/* tags and icons */}
+        {/* tags */}
 
         <div className="badge-container tag tag-dark tag-round-border">
           <span className="icon-badge">55:00</span>
