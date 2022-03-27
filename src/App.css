@@ -1,51 +1,34 @@
+/* dt - dark theme */
+
+:root {
+  --dt-primary-bg: #0e131f;
+  --dt-secondary-bg: #19212c;
+  --dt-light-bg: #303946;
+  --dt-font-color: #e2e2e2;
+  --dt-border-color: #383838;
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #22201c;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.App.dark {
+ background-color: var(--dt-primary-bg);
+ color: var(--dt-font-color);
 }
 
-.brand-title {
-  font-size: 3rem;
-  color: #d9d9d9;
+.transparent-bg {
+  background-color: transparent;
 }
 
-.brand-title span {
-  color: #ffde59;
+.fs-10px {
+  font-size: 1rem;
 }
 
-.brand-description {
-  font-size: 1.4rem;
-}
-
-.links {
-  display: flex;
-}
-
-.links a {
-  color: #d9d9d9;
+.fs-12px {
   font-size: 1.2rem;
-  margin: 1rem;
+}
+
+.fs-14px {
+  font-size: 1.4rem;
 }

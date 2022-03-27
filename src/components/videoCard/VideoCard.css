@@ -1,0 +1,62 @@
+.video-card .profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--round-radius);
+}
+
+.video-card .details {
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.video-card .text-content {
+  row-gap: 0.5rem;
+  min-height: 71px;
+}
+
+.video-card .text-content .title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.video-card .menu-btn {
+  color: inherit;
+  margin-left: auto;
+  padding: 0 1rem 1rem 1rem;
+}
+
+.video-card {
+  height: fit-content;
+  position: relative;
+}
+
+.video-card .tag {
+  position: absolute;
+  right: 10px;
+  bottom: 88px;
+}
+
+.video-drawer-conatiner {
+  position: absolute;
+  background-color: var(--dt-secondary-bg);
+  z-index: 2;
+  padding: 1rem 0;
+  bottom: -95px;
+  right: 0;
+  font-size: 14px;
+}
+
+.video-drawer-conatiner .drawer-row {
+  padding: 1rem;
+  background-color: inherit;
+  color: inherit;
+  display: block;
+  width: 100%;
+  text-align: left;
+}
+
+.video-drawer-conatiner .drawer-row:hover {
+  background-color: var(--dt-light-bg);
+}
