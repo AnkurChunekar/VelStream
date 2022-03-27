@@ -4,13 +4,13 @@ import { Drawer } from "../../components";
 function Palylist() {
   return (
     <div className="horizontal-card flex ai-center p-s playlist">
-      <i class="fa-solid fa-list-check fs-3"></i>
+      <i className="fa-solid fa-list-check fs-3"></i>
       <div>
         <div className="title">Ankur's playlist</div>
         <div className="gray-text fs-6">10 videos</div>
       </div>
       <button className="delete-btn">
-        <i class="fa-solid fa-trash"></i>
+        <i className="fa-solid fa-trash"></i>
       </button>
     </div>
   );

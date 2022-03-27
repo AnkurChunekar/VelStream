@@ -21,7 +21,7 @@ export function HorizontalCard() {
       </div>
 
       <button className="delete-btn">
-        <i class="fa-solid fa-trash"></i>
+        <i className="fa-solid fa-trash"></i>
       </button>
     </div>
   );
