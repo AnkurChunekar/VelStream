@@ -22,7 +22,7 @@ export function PasswordInput({
           className="p-xxs gray-text input-btn"
           onClick={() => setIsVisible((pv) => !pv)}
         >
-          <i className={`fa-solid ${isVisible ? "fa-eye" : "fa-eye-slash"}`} />
+          <i className={`fa-solid ${isVisible ? "fa-eye" : "fa-eye-slash"}`} title={`${isVisible ? "Hide Password" : "Show Password"}`} />
         </div>
       </div>
       <label className="error-msg fs-6">Passwords Don't Match</label>

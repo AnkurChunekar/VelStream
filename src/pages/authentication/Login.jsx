@@ -66,7 +66,7 @@ export function Login() {
           </button>
           <p className="m-xxs m-rl0 center-align-text gray-text">
             New User?{" "}
-            <Link className="primary-color-text" to="/signup">
+            <Link title="Sign Up" className="primary-color-text" to="/signup">
               Sign Up!
             </Link>
             .
