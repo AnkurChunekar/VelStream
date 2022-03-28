@@ -13,4 +13,4 @@ const authReducer = (state, action) => {
     }
 }
 
-export { authReducer };
+export { authReducer, initialAuthState };
