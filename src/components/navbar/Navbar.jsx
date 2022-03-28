@@ -1,12 +1,18 @@
 import "./Navbar.css";
+import { Link } from "react-router-dom";
+import { useAuth } from "../../context";
 
 export function Navbar() {
+  const { authState: { user } } = useAuth();
+
   return (
     <>
       <nav className="navigation dark">
         <div className="nav-brand">
           <i className="fas fa-bars ham-icon" id="ham-icon" />
-          <a href="https://ankurchunekar.netlify.app/" className="brand-name">VelStream</a>
+          <Link to="/" className="brand-name">
+            VelStream
+          </Link>
         </div>
         <div className="navigation-ham-menu" id="navigation-ham-menu">
           <i className="fas fa-times" id="ham-close-icon" />
@@ -18,14 +24,14 @@ export function Navbar() {
         </div>
         <div className="navigation-ham-bg" />
         <div className="nav-actions">
-          <span className="m-xs" >
+          <span className="m-xs">
             <i id="nav-search-icon" className="fas fa-search" />
           </span>
-          <span className="m-xs" >
-            <span className="icon-container badge-container">
-            <i className="fa-solid fa-user"></i>
+          <Link to={user ? "/user" : "/login"}>
+            <span className="m-xs">
+              <i className={`fa-solid ${user ? "fa-user-check" : "fa-user-xmark"}`}></i>
             </span>
-          </span>
+          </Link>
         </div>
       </nav>
       {/* Search bar starts */}
