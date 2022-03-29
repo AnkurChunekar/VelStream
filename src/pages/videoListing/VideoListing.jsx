@@ -3,14 +3,19 @@ import { Drawer, VideoCard } from "../../components";
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
+import { Fragment } from "react";
 
 export function VideoListing() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
     (async () => {
-      const response = await axios.get("/api/videos");
-      setData(response.data.videos);
+      try {
+        const response = await axios.get("/api/videos");
+        setData(response.data.videos);
+      } catch (error) {
+        alert(error);
+      }
     })();
   }, []);
 
@@ -28,9 +33,11 @@ export function VideoListing() {
 
         <div className="video-grid-wrapper">
           <div className="video-grid">
-            {
-              data.map(video => <VideoCard video={video} />)
-            }
+            {data.map((video) => (
+              <Fragment key={video._id}>
+                <VideoCard video={video} />
+              </Fragment>
+            ))}
           </div>
         </div>
       </div>
