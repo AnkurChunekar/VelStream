@@ -1,4 +1,4 @@
-import { ContentSidebar, Drawer, HorizontalCard } from "../../components";
+import { ContentSidebar, Drawer } from "../../components";
 
 export function History() {
   return (
@@ -6,15 +6,7 @@ export function History() {
       <Drawer />
       <div className="flex w-100pc">
         <ContentSidebar pageTitle={"History"} />
-        <div className="flex flex-column h-card-container">
-          <HorizontalCard />
-          <HorizontalCard />
-          <HorizontalCard />
-          <HorizontalCard />
-          <HorizontalCard />
-          <HorizontalCard />
-          <HorizontalCard />
-        </div>
+        <div className="flex flex-column h-card-container"></div>
       </div>
     </main>
   );
