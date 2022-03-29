@@ -1,15 +1,18 @@
 import "./ContentSidebar.css";
 
-export function ContentSidebar({ pageTitle }) {
+export function ContentSidebar({ pageTitle, sidebarBanner, videoCount }) {
+
+const defaultBannerSrc = "https://i.picsum.photos/id/507/350/200.jpg?hmac=hlpv7jKjCuDSZfctg82iwrLnYS8hWlJB5yfaECifXjw";
+
   return (
     <div className="content-sidebar p-xl">
       <div className="banner">
         <img
-          src="https://i.picsum.photos/id/507/350/200.jpg?hmac=hlpv7jKjCuDSZfctg82iwrLnYS8hWlJB5yfaECifXjw"
+          src={sidebarBanner || defaultBannerSrc}
           className="img-responsive"
           alt="first video thumbnail"
         />
-        <div className="text-overlay">13 Videos</div>
+        <div className="text-overlay">{videoCount} Videos</div>
       </div>
 
       <h2 className="fw-400 m-xxs m-rl0"> {pageTitle} </h2>
