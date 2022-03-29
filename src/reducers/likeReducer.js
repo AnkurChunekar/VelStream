@@ -1,11 +1,13 @@
 const initialLikeState = {
-  likeData: [22],
+  likeData: [],
 };
 
 const likeReducer = (state, action) => {
   switch (action.type) {
-    case "LIKE":
-      return state;
+    case "UPDATE_LIKES":
+      return { likeData: action.payload };
+    case "RESET":
+      return initialLikeState;
     default:
       return state;
   }
