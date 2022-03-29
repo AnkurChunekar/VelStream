@@ -1,17 +1,18 @@
 import "./VideoCard.css";
 import { useState } from "react";
+import { VideoMenu } from "./VideoMenu";
 
 export function VideoCard({ video }) {
-  const [isVideoDrawerVisible, setIsVideoDrawerVisible] = useState(false);
+  const [isVideoMenuVisible, setIsVideoMenuVisible] = useState(false);
   const { channelName, videoThumbnail, title, channelThumbnail, views, likes } =
     video;
 
-  const handleVideoDrawerToggleClick = () => {
-    setIsVideoDrawerVisible((pv) => !pv);
+  const handleVideoMenuToggleClick = () => {
+    setIsVideoMenuVisible((pv) => !pv);
   };
 
   return (
-    <div key={video._id} className="video-card flex flex-column">
+    <div className="video-card flex flex-column">
       {/* thumnail image */}
       <img src={videoThumbnail} className="img-responsive" alt="" />
       <div className="flex details ai-start">
@@ -31,7 +32,7 @@ export function VideoCard({ video }) {
 
         {/* menu button */}
         <button
-          onClick={handleVideoDrawerToggleClick}
+          onClick={handleVideoMenuToggleClick}
           className="menu-btn fs-4 transparent-bg"
         >
           <i className="fa-solid fa-ellipsis-vertical"></i>
@@ -43,28 +44,12 @@ export function VideoCard({ video }) {
           <span className="icon-badge"> {video.videoLength} </span>
         </div>
 
-        {/* video drawer */}
-        {isVideoDrawerVisible ? (
-          <div className="video-drawer-conatiner">
-            <button className="drawer-row">
-              <span>
-                <i className="fa-solid fa-list-check"></i>
-              </span>
-              <span className="m-xs m-tb0"> Save to playlist </span>
-            </button>
-            <button className="drawer-row">
-              <span>
-                <i className="fa-regular fa-clock"></i>
-              </span>
-              <span className="m-xs m-tb0"> Save to Watch Later </span>
-            </button>
-            <button className="drawer-row">
-              <span>
-                <i className="fa-solid fa-thumbs-up"></i>
-              </span>
-              <span className="m-xs m-tb0"> Add to liked Videos </span>
-            </button>
-          </div>
+        {/* video menu */}
+        {isVideoMenuVisible ? (
+          <VideoMenu
+            video={video}
+            setIsVideoMenuVisible={setIsVideoMenuVisible}
+          />
         ) : null}
       </div>
     </div>
