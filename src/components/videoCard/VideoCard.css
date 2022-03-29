@@ -38,7 +38,7 @@
   bottom: 88px;
 }
 
-.video-drawer-conatiner {
+.video-menu {
   position: absolute;
   background-color: var(--dt-secondary-bg);
   z-index: 2;
@@ -48,7 +48,7 @@
   font-size: 14px;
 }
 
-.video-drawer-conatiner .drawer-row {
+.video-menu .menu-row {
   padding: 1rem;
   background-color: inherit;
   color: inherit;
@@ -57,6 +57,6 @@
   text-align: left;
 }
 
-.video-drawer-conatiner .drawer-row:hover {
+.video-menu .menu-row:hover {
   background-color: var(--dt-light-bg);
 }

@@ -1,26 +1,36 @@
 import "./HorizontalCard.css";
+import { removeFromLikesService } from "../../services";
+import { useAuth, useLike } from "../../context";
 
-export function HorizontalCard() {
+export function HorizontalCard({ video }) {
+  const {
+    authState: { token },
+  } = useAuth();
+  const { likeDispatch } = useLike();
+
+  const { videoThumbnail, videoLength, title, channelName } = video;
+
+  const removeFromLikeHandler = () => {
+    removeFromLikesService({ video, token, likeDispatch });
+  };
+
   return (
     <div className="horizontal-card flex p-s">
       <div className="banner">
         <img
-          src="https://i.picsum.photos/id/507/350/200.jpg?hmac=hlpv7jKjCuDSZfctg82iwrLnYS8hWlJB5yfaECifXjw"
+          src={videoThumbnail}
           className="img-responsive thumbnail"
           alt="video thumbnail"
         />
         <div className="badge-container tag tag-dark tag-round-border">
-          <span className="icon-badge">55:00</span>
+          <span className="icon-badge"> {videoLength} </span>
         </div>
       </div>
       <div>
-        <div className="title">
-          This is some dummy text for the title of the Video.
-        </div>
-        <div className="gray-text fs-6 m-xxs m-rl0"> Ankur Chunekar. </div>
+        <div className="title m-xs m-rl0">{title}</div>
+        <div className="gray-text fs-6"> {channelName} </div>
       </div>
-
-      <button className="delete-btn">
+      <button onClick={removeFromLikeHandler} className="delete-btn">
         <i className="fa-solid fa-trash"></i>
       </button>
     </div>

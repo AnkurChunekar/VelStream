@@ -1,43 +1,38 @@
 import "./VideoCard.css";
 import { useState } from "react";
+import { VideoMenu } from "./VideoMenu";
 
-export function VideoCard() {
-  const [isVideoDrawerVisible, setIsVideoDrawerVisible] = useState(false);
+export function VideoCard({ video }) {
+  const [isVideoMenuVisible, setIsVideoMenuVisible] = useState(false);
+  const { channelName, videoThumbnail, title, channelThumbnail, views, likes } =
+    video;
 
-  const handleVideoDrawerToggleClick = () => {
-    setIsVideoDrawerVisible((pv) => !pv);
+  const handleVideoMenuToggleClick = () => {
+    setIsVideoMenuVisible((pv) => !pv);
   };
 
   return (
     <div className="video-card flex flex-column">
       {/* thumnail image */}
-      <img
-        src="https://i.picsum.photos/id/507/350/200.jpg?hmac=hlpv7jKjCuDSZfctg82iwrLnYS8hWlJB5yfaECifXjw"
-        className="img-responsive"
-        alt=""
-      />
+      <img src={videoThumbnail} className="img-responsive" alt="" />
       <div className="flex details ai-start">
-        <img
-          src="https://i.picsum.photos/id/507/350/200.jpg?hmac=hlpv7jKjCuDSZfctg82iwrLnYS8hWlJB5yfaECifXjw"
-          className="profile-pic"
-          alt=""
-        />
+        <img src={channelThumbnail} className="profile-pic" alt="" />
 
         {/* Text content */}
 
         <div className="text-content flex flex-column">
-          <div className="title fs-14px">
-            This can be a random title for a random video.
-          </div>
+          <div className="title fs-14px">{title}</div>
           <div className="gray-text fs-12px">
-            <p> Ankur Chunekar </p>
-            <span>660K views | 1 year ago</span>
+            <p> {channelName} </p>
+            <span>
+              {views} Views | {likes} Likes
+            </span>
           </div>
         </div>
 
         {/* menu button */}
         <button
-          onClick={handleVideoDrawerToggleClick}
+          onClick={handleVideoMenuToggleClick}
           className="menu-btn fs-4 transparent-bg"
         >
           <i className="fa-solid fa-ellipsis-vertical"></i>
@@ -46,31 +41,15 @@ export function VideoCard() {
         {/* tags */}
 
         <div className="badge-container tag tag-dark tag-round-border">
-          <span className="icon-badge">55:00</span>
+          <span className="icon-badge"> {video.videoLength} </span>
         </div>
 
-        {/* video drawer */}
-        {isVideoDrawerVisible ? (
-          <div className="video-drawer-conatiner">
-            <button className="drawer-row">
-              <span>
-                <i className="fa-solid fa-list-check"></i>
-              </span>
-              <span className="m-xs m-tb0"> Save to playlist </span>
-            </button>
-            <button className="drawer-row">
-              <span>
-                <i className="fa-regular fa-clock"></i>
-              </span>
-              <span className="m-xs m-tb0"> Save to Watch Later </span>
-            </button>
-            <button className="drawer-row">
-              <span>
-                <i className="fa-solid fa-thumbs-up"></i>
-              </span>
-              <span className="m-xs m-tb0"> Add to liked Videos </span>
-            </button>
-          </div>
+        {/* video menu */}
+        {isVideoMenuVisible ? (
+          <VideoMenu
+            video={video}
+            setIsVideoMenuVisible={setIsVideoMenuVisible}
+          />
         ) : null}
       </div>
     </div>
