@@ -1,8 +1,16 @@
 import "./App.css";
 import { Navbar } from "./components";
-import { User, History, Liked, PlaylistPage, VideoListing, WatchLater, Login, Signup } from "./pages";
+import {
+  User,
+  History,
+  Liked,
+  PlaylistPage,
+  VideoListing,
+  WatchLater,
+  Login,
+  Signup,
+} from "./pages";
 import { Routes, Route } from "react-router-dom";
-
 
 function App() {
   return (
