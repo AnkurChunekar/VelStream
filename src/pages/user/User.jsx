@@ -1,9 +1,10 @@
 import { useNavigate } from "react-router-dom";
-import { useAuth, useLike } from "../../context";
+import { useAuth, useLike, usePlaylist } from "../../context";
 
 export function User() {
   const { authState, authDispatch } = useAuth();
   const { likeDispatch } = useLike();
+  const { playlistDispatch } = usePlaylist();
   const navigate = useNavigate();
   const { user } = authState;
 
@@ -14,6 +15,7 @@ export function User() {
     localStorage.removeItem("token");
     authDispatch({ type: "LOGOUT" });
     likeDispatch({type: "RESET"});
+    playlistDispatch({type: "RESET"});
   };
 
   return (

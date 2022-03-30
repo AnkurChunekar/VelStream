@@ -2,7 +2,7 @@ import "./VideoCard.css";
 import { useState } from "react";
 import { VideoMenu } from "./VideoMenu";
 
-export function VideoCard({ video }) {
+export function VideoCard({ video, setIsPlaylistModalVisible, setPlaylistModalVideo }) {
   const [isVideoMenuVisible, setIsVideoMenuVisible] = useState(false);
   const { channelName, videoThumbnail, title, channelThumbnail, views, likes } =
     video;
@@ -49,6 +49,8 @@ export function VideoCard({ video }) {
           <VideoMenu
             video={video}
             setIsVideoMenuVisible={setIsVideoMenuVisible}
+            setIsPlaylistModalVisible={setIsPlaylistModalVisible}
+            setPlaylistModalVideo={setPlaylistModalVideo}
           />
         ) : null}
       </div>

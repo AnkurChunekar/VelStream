@@ -1,0 +1,43 @@
+.playlist-modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 99;
+}
+
+.playlist-modal .modal {
+  max-width: 25rem;
+  background-color: var(--dt-secondary-bg);
+}
+
+.playlist-modal button {
+  background-color: transparent;
+  color: inherit;
+}
+
+.playlist-modal header {
+  border-bottom: solid 1.5px var(--dt-border-color);
+}
+
+.playlist-modal footer {
+  border-top: solid 1.5px var(--dt-border-color);
+}
+
+.playlist-modal .checkbox {
+  margin: 1.6rem 1.2rem;
+}
+
+.playlist-modal footer {
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+.playlist-modal .create-playlist-input {
+  border: none;
+  border-bottom: solid 1.5px #939393;
+  color: inherit;
+}
+

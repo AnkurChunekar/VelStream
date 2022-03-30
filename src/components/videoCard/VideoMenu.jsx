@@ -2,7 +2,12 @@ import { addToLikesService, removeFromLikesService } from "../../services";
 import { useAuth, useLike } from "../../context";
 import { useNavigate } from "react-router-dom";
 
-export function VideoMenu({ video, setIsVideoMenuVisible }) {
+export function VideoMenu({
+  video,
+  setIsVideoMenuVisible,
+  setIsPlaylistModalVisible,
+  setPlaylistModalVideo
+}) {
   const navigate = useNavigate();
 
   const {
@@ -10,10 +15,12 @@ export function VideoMenu({ video, setIsVideoMenuVisible }) {
   } = useAuth();
 
   const {
-    likeState: { likeData }, likeDispatch,
+    likeState: { likeData },
+    likeDispatch,
   } = useLike();
 
-  const videoInLike = likeData.findIndex((item) => item._id === video._id) !== -1;
+  const videoInLike =
+    likeData.findIndex((item) => item._id === video._id) !== -1;
 
   const LikeClickHandler = () => {
     setIsVideoMenuVisible(false);
@@ -28,9 +35,19 @@ export function VideoMenu({ video, setIsVideoMenuVisible }) {
     }
   };
 
+  const handleSaveToPlaylistClick = () => {
+    if (token) {
+      setIsVideoMenuVisible(false);
+      setIsPlaylistModalVisible(true);
+      setPlaylistModalVideo(video);
+    } else {
+      navigate("login");
+    }
+  };
+
   return (
     <div className="video-menu">
-      <button className="menu-row">
+      <button onClick={handleSaveToPlaylistClick} className="menu-row">
         <span>
           <i className="fa-solid fa-list-check"></i>
         </span>

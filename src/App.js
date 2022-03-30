@@ -9,7 +9,9 @@ import {
   WatchLater,
   Login,
   Signup,
+  SinglePlaylistPage
 } from "./pages";
+import Mockman from "mockman-js";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
@@ -25,6 +27,8 @@ function App() {
         <Route path="/liked" element={<Liked />} />
         <Route path="/history" element={<History />} />
         <Route path="/user" element={<User />} />
+        <Route path="/playlist/:playlistID" element={<SinglePlaylistPage />} />
+        <Route path="/m" element={<Mockman />} />
       </Routes>
     </div>
   );

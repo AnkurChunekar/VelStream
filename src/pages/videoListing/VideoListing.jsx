@@ -1,5 +1,5 @@
 import "./VideoListing.css";
-import { Drawer, VideoCard } from "../../components";
+import { Drawer, VideoCard, PlaylistModal } from "../../components";
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -7,6 +7,8 @@ import { Fragment } from "react";
 
 export function VideoListing() {
   const [data, setData] = useState([]);
+  const [isPlaylistModalVisible, setIsPlaylistModalVisible] = useState(false);
+  const [playlistModalVideo, setPlaylistModalVideo] = useState({});
 
   useEffect(() => {
     (async () => {
@@ -32,10 +34,21 @@ export function VideoListing() {
         </div>
 
         <div className="video-grid-wrapper">
+          {isPlaylistModalVisible ? (
+            <PlaylistModal
+              setIsPlaylistModalVisible={setIsPlaylistModalVisible}
+              playlistModalVideo={playlistModalVideo}
+            />
+          ) : null}
+
           <div className="video-grid">
             {data.map((video) => (
               <Fragment key={video._id}>
-                <VideoCard video={video} />
+                <VideoCard
+                  video={video}
+                  setIsPlaylistModalVisible={setIsPlaylistModalVisible}
+                  setPlaylistModalVideo={setPlaylistModalVideo}
+                />
               </Fragment>
             ))}
           </div>
