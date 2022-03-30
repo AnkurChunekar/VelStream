@@ -39,3 +39,8 @@
   border: solid 2px var(--dt-border-color);
   background-color: var(--dt-primary-bg);
 }
+
+.h-card-container {
+  flex-grow: 1;
+  padding-top: 1.5rem;
+}

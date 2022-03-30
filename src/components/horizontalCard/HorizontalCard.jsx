@@ -1,17 +1,27 @@
 import "./HorizontalCard.css";
-import { removeFromLikesService } from "../../services";
-import { useAuth, useLike } from "../../context";
+import { removeFromLikesService, removeFromPlaylistService } from "../../services";
+import { useAuth, useLike, usePlaylist } from "../../context";
+import { Navigate, useNavigate } from "react-router-dom";
 
-export function HorizontalCard({ video }) {
+export function HorizontalCard({ video, playlistID = "" }) {
   const {
     authState: { token },
   } = useAuth();
   const { likeDispatch } = useLike();
+  const { playlistDispatch } = usePlaylist();
+  const { navigate } = useNavigate();
 
   const { videoThumbnail, videoLength, title, channelName } = video;
 
-  const removeFromLikeHandler = () => {
-    removeFromLikesService({ video, token, likeDispatch });
+  const removeBtnClickHandler = () => {
+    if (window.location.pathname === "/liked") {
+      removeFromLikesService({ video, token, likeDispatch });
+    } 
+
+    if (window.location.pathname.includes("/playlist")) {
+      removeFromPlaylistService({ video, token, playlistDispatch, playlistId: playlistID });
+    } 
+
   };
 
   return (
@@ -30,7 +40,7 @@ export function HorizontalCard({ video }) {
         <div className="title m-xs m-rl0">{title}</div>
         <div className="gray-text fs-6"> {channelName} </div>
       </div>
-      <button onClick={removeFromLikeHandler} className="delete-btn">
+      <button onClick={removeBtnClickHandler} className="delete-btn">
         <i className="fa-solid fa-trash"></i>
       </button>
     </div>
