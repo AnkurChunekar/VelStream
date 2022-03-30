@@ -1,7 +1,9 @@
 import "./HorizontalCard.css";
-import { removeFromLikesService, removeFromPlaylistService } from "../../services";
+import {
+  removeFromLikesService,
+  removeFromPlaylistService,
+} from "../../services";
 import { useAuth, useLike, usePlaylist } from "../../context";
-import { Navigate, useNavigate } from "react-router-dom";
 
 export function HorizontalCard({ video, playlistID = "" }) {
   const {
@@ -9,19 +11,22 @@ export function HorizontalCard({ video, playlistID = "" }) {
   } = useAuth();
   const { likeDispatch } = useLike();
   const { playlistDispatch } = usePlaylist();
-  const { navigate } = useNavigate();
 
   const { videoThumbnail, videoLength, title, channelName } = video;
 
   const removeBtnClickHandler = () => {
     if (window.location.pathname === "/liked") {
       removeFromLikesService({ video, token, likeDispatch });
-    } 
+    }
 
     if (window.location.pathname.includes("/playlist")) {
-      removeFromPlaylistService({ video, token, playlistDispatch, playlistId: playlistID });
-    } 
-
+      removeFromPlaylistService({
+        video,
+        token,
+        playlistDispatch,
+        playlistId: playlistID,
+      });
+    }
   };
 
   return (
