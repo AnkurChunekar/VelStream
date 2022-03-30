@@ -5,13 +5,14 @@ export const loginService = async ({
   authDispatch,
   navigate,
   likeDispatch,
+  playlistDispatch
 }) => {
   try {
     const response = await axios.post("/api/auth/login", {
       email: userData.email,
       password: userData.password,
     });
-
+    
     switch (response.status) {
       case 200:
         localStorage.setItem("token", response.data.encodedToken);
@@ -26,6 +27,10 @@ export const loginService = async ({
           type: "UPDATE_LIKES",
           payload: response.data.foundUser.likes,
         });
+        playlistDispatch({
+          type: "UPDATE_PLAYLISTS",
+          payload: response.data.foundUser.playlists,
+        })
         alert("Login Successfull!");
         navigate("/");
         break;
