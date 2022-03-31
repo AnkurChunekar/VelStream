@@ -4,9 +4,11 @@ import {
   createNewPlaylistService,
   addToPlaylistService,
   removeFromPlaylistService,
+  addToWatchLaterService,
+  removeFromWatchLaterService,
 } from "../../services";
-import { usePlaylist, useAuth } from "../../context";
-import { checkIfVideoInPlaylist } from "../../helpers";
+import { usePlaylist, useAuth, useWatchLater } from "../../context";
+import { checkIfVideoInPlaylist, checkIfItemInArrOfObj } from "../../helpers";
 
 export function PlaylistModal({
   setIsPlaylistModalVisible,
@@ -24,6 +26,11 @@ export function PlaylistModal({
     playlistDispatch,
     playlistState: { playlists },
   } = usePlaylist();
+
+  const {
+    watchLaterState: { watchLaterData },
+    watchLaterDispatch,
+  } = useWatchLater();
 
   const {
     authState: { token },
@@ -75,6 +82,28 @@ export function PlaylistModal({
     }
   };
 
+  // Watchlater
+  const videoInWatchlater = checkIfItemInArrOfObj(
+    watchLaterData,
+    (item) => item._id === playlistModalVideo._id
+  );
+
+  const handleWatchLaterClick = () => {
+    if (!videoInWatchlater) {
+      addToWatchLaterService({
+        video: playlistModalVideo,
+        token,
+        watchLaterDispatch,
+      });
+    } else {
+      removeFromWatchLaterService({
+        video: playlistModalVideo,
+        token,
+        watchLaterDispatch,
+      });
+    }
+  };
+
   return (
     <div className="playlist-modal flex flex-center">
       <div className="modal m-md1 p-xs">
@@ -88,9 +117,14 @@ export function PlaylistModal({
           </button>
         </header>
         <section className="modal-body">
-          <div className="input-wrapper checkbox disabled">
-            <input disabled type="checkbox" id="checkbox-1" />
-            <label htmlFor="checkbox-1" className="m-xxs m-tb0">
+          <div className="input-wrapper checkbox">
+            <input
+              checked={videoInWatchlater ? true : false}
+              onChange={handleWatchLaterClick}
+              type="checkbox"
+              id="watch-later"
+            />
+            <label htmlFor="watch-later" className="m-xxs m-tb0">
               Watch Later
             </label>
           </div>

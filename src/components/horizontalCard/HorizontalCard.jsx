@@ -2,8 +2,9 @@ import "./HorizontalCard.css";
 import {
   removeFromLikesService,
   removeFromPlaylistService,
+  removeFromWatchLaterService
 } from "../../services";
-import { useAuth, useLike, usePlaylist } from "../../context";
+import { useAuth, useLike, usePlaylist, useWatchLater } from "../../context";
 
 export function HorizontalCard({ video, playlistID = "" }) {
   const {
@@ -11,12 +12,18 @@ export function HorizontalCard({ video, playlistID = "" }) {
   } = useAuth();
   const { likeDispatch } = useLike();
   const { playlistDispatch } = usePlaylist();
+  const { watchLaterDispatch } = useWatchLater();
+
 
   const { videoThumbnail, videoLength, title, channelName } = video;
 
   const removeBtnClickHandler = () => {
     if (window.location.pathname === "/liked") {
       removeFromLikesService({ video, token, likeDispatch });
+    }
+
+    if (window.location.pathname === "/watchlater") {
+      removeFromWatchLaterService({ video, token, watchLaterDispatch });
     }
 
     if (window.location.pathname.includes("/playlist")) {
