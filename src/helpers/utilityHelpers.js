@@ -7,3 +7,5 @@ export const checkIfAllInputsAreNotEmpty = (userData) => {
 
     return true;
 };
+
+export const checkIfItemInArrOfObj = (array, callback) => array.some(callback);

@@ -5,7 +5,8 @@ export const loginService = async ({
   authDispatch,
   navigate,
   likeDispatch,
-  playlistDispatch
+  playlistDispatch,
+  watchLaterDispatch
 }) => {
   try {
     const response = await axios.post("/api/auth/login", {
@@ -30,6 +31,10 @@ export const loginService = async ({
         playlistDispatch({
           type: "UPDATE_PLAYLISTS",
           payload: response.data.foundUser.playlists,
+        })
+        watchLaterDispatch({
+          type: "UPDATE_WATCHLATER",
+          payload: response.data.foundUser.watchlater,
         })
         alert("Login Successfull!");
         navigate("/");
