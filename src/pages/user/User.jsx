@@ -1,10 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import { useAuth, useLike, usePlaylist } from "../../context";
+import { useAuth, useLike, usePlaylist, useWatchLater } from "../../context";
 
 export function User() {
   const { authState, authDispatch } = useAuth();
   const { likeDispatch } = useLike();
   const { playlistDispatch } = usePlaylist();
+  const { watchLaterDispatch } = useWatchLater();
   const navigate = useNavigate();
   const { user } = authState;
 
@@ -16,6 +17,7 @@ export function User() {
     authDispatch({ type: "LOGOUT" });
     likeDispatch({type: "RESET"});
     playlistDispatch({type: "RESET"});
+    watchLaterDispatch({type: "RESET"});
   };
 
   return (
