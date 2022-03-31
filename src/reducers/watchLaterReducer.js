@@ -1,12 +1,14 @@
-const initialWatchLaterState = { watchLaterData: [22] };
+const initialWatchLaterState = { watchLaterData: [] };
 
 const watchLaterReducer = (state, action) => {
     switch (action.type) {
+        case "UPDATE_WATCHLATER":
+          return { watchLaterData: action.payload };
         case "RESET":
-            return { watchLaterData: [] };
+          return initialWatchLaterState;
         default:
-            return state;
-    }
+          return state;
+      }
 }
 
 export { watchLaterReducer, initialWatchLaterState };
