@@ -10,7 +10,7 @@ export function Navbar() {
       <nav className="navigation dark">
         <div className="nav-brand">
           <i className="fas fa-bars ham-icon" id="ham-icon" />
-          <Link to="/" className="brand-name">
+          <Link to="/explore" className="brand-name">
             VelStream
           </Link>
         </div>

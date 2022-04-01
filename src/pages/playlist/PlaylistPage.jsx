@@ -27,7 +27,7 @@ export function PlaylistPage() {
               </Fragment>
             ))
           ) : (
-            <Link to="/" className="btn btn-primary m-xs">
+            <Link to="/explore" className="btn btn-primary m-xs">
               Explore More
             </Link>
           )}
