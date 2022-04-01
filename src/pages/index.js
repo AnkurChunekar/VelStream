@@ -7,3 +7,4 @@ export { Liked } from "./liked/Liked";
 export { PlaylistPage } from "./playlist/PlaylistPage";
 export { User } from "./user/User";
 export { SinglePlaylistPage } from "./singlePlaylistPage/SinglePlaylistPage";
+export { SingleVideoPage } from "./singleVideoPage/SingleVideoPage";
