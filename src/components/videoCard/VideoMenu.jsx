@@ -46,12 +46,12 @@ export function VideoMenu({
 
   const handleSaveToPlaylistClick = (e) => {
     e.stopPropagation();
-    if (token) {
-      setIsVideoMenuVisible(false);
+    setIsVideoMenuVisible(false);
+    if (user) {
       setIsPlaylistModalVisible(true);
       setPlaylistModalVideo(video);
     } else {
-      navigate("login");
+      navigate("/login");
     }
   };
 
