@@ -4,11 +4,14 @@ import {
   createNewPlaylistService,
   addToPlaylistService,
   removeFromPlaylistService,
-  addToWatchLaterService,
-  removeFromWatchLaterService,
 } from "../../services";
 import { usePlaylist, useAuth, useWatchLater } from "../../context";
-import { checkIfVideoInPlaylist, checkIfItemInArrOfObj } from "../../helpers";
+import {
+  checkIfItemInArrOfObj,
+  watchLaterToggleClickHandler,
+  checkIfVideoInPlaylist,
+} from "../../helpers";
+import { useNavigate } from "react-router-dom";
 
 export function PlaylistModal({
   setIsPlaylistModalVisible,
@@ -16,6 +19,8 @@ export function PlaylistModal({
 }) {
   const [isCreatePlaylistInpVisible, setIsCreatePlaylistInpVisible] =
     useState(false);
+
+  const navigate = useNavigate();
 
   const [newPlaylistData, setNewPlaylistData] = useState({
     title: "",
@@ -33,7 +38,7 @@ export function PlaylistModal({
   } = useWatchLater();
 
   const {
-    authState: { token },
+    authState: { user, token },
   } = useAuth();
 
   const handleClosePlaylistModalClick = () => {
@@ -89,19 +94,14 @@ export function PlaylistModal({
   );
 
   const handleWatchLaterClick = () => {
-    if (!videoInWatchlater) {
-      addToWatchLaterService({
-        video: playlistModalVideo,
-        token,
-        watchLaterDispatch,
-      });
-    } else {
-      removeFromWatchLaterService({
-        video: playlistModalVideo,
-        token,
-        watchLaterDispatch,
-      });
-    }
+    watchLaterToggleClickHandler({
+      user,
+      token,
+      watchLaterData,
+      watchLaterDispatch,
+      video: playlistModalVideo,
+      navigate,
+    });
   };
 
   return (
