@@ -2,12 +2,17 @@ import "./Authentication.css";
 import { PasswordInput, TextInput } from "./components";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { useAuth, useLike, usePlaylist, useWatchLater } from "../../context";
+import {
+  useAuth,
+  useLike,
+  usePlaylist,
+  useWatchLater,
+  useHistory,
+} from "../../context";
 import { loginService } from "../../services";
 import { checkIfAllInputsAreNotEmpty } from "../../helpers";
 
 export function Login() {
-
   const [userData, setUserData] = useState({
     email: "",
     password: "",
@@ -18,6 +23,7 @@ export function Login() {
   const { likeDispatch } = useLike();
   const { playlistDispatch } = usePlaylist();
   const { watchLaterDispatch } = useWatchLater();
+  const { historyDispatch } = useHistory();
 
   const handleLoginClick = (e) => {
     e.preventDefault();
@@ -25,7 +31,15 @@ export function Login() {
     if (!checkIfAllInputsAreNotEmpty(userData)) {
       alert("Email and Password cannot be empty!");
     } else {
-      loginService({userData, authDispatch, navigate, likeDispatch, playlistDispatch, watchLaterDispatch});
+      loginService({
+        userData,
+        authDispatch,
+        navigate,
+        likeDispatch,
+        playlistDispatch,
+        watchLaterDispatch,
+        historyDispatch,
+      });
     }
   };
 
@@ -33,7 +47,6 @@ export function Login() {
     e.preventDefault();
     setUserData({ email: "johndoe@gmail.com", password: "johnDoe123" });
   };
-
 
   return (
     <>
