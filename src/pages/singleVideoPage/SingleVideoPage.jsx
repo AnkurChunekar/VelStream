@@ -55,7 +55,7 @@ export function SingleVideoPage() {
         alert(error);
       }
     })();
-  }, []);
+  }, [historyDispatch, token, user, videoID]);
 
   // like functionalities
 
