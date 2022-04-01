@@ -41,3 +41,12 @@
 .w-100pc {
   width: 100%;
 }
+
+.btn-unset {
+  background-color: inherit;
+  color: inherit;
+}
+
+.c-gap-1rem {
+  column-gap: 1rem;
+}
