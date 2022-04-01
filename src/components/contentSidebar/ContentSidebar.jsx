@@ -1,8 +1,21 @@
 import "./ContentSidebar.css";
+import { clearAllHistoryService } from "../../services";
+import { useHistory, useAuth } from "../../context";
 
 export function ContentSidebar({ pageTitle, sidebarBanner, videoCount }) {
+  const defaultBannerSrc =
+    "https://i.picsum.photos/id/507/350/200.jpg?hmac=hlpv7jKjCuDSZfctg82iwrLnYS8hWlJB5yfaECifXjw";
 
-const defaultBannerSrc = "https://i.picsum.photos/id/507/350/200.jpg?hmac=hlpv7jKjCuDSZfctg82iwrLnYS8hWlJB5yfaECifXjw";
+  const { historyDispatch } = useHistory();
+  const {
+    authState: { user, token },
+  } = useAuth();
+
+  const handleClearHistoryClick = () => {
+    if (user) {
+      clearAllHistoryService({ token, historyDispatch });
+    }
+  };
 
   return (
     <div className="content-sidebar p-xl">
@@ -28,6 +41,14 @@ const defaultBannerSrc = "https://i.picsum.photos/id/507/350/200.jpg?hmac=hlpv7j
         />
         <span className="m-xxs m-tb0"> Ankur Chunekar </span>
       </div>
+      {pageTitle === "History" && videoCount > 0 ? (
+        <button
+          onClick={handleClearHistoryClick}
+          className="btn btn-danger btn-outline w-100pc"
+        >
+          Clear
+        </button>
+      ) : null}
     </div>
   );
 }
