@@ -9,7 +9,8 @@ import {
   WatchLater,
   Login,
   Signup,
-  SinglePlaylistPage
+  SinglePlaylistPage,
+  SingleVideoPage
 } from "./pages";
 import Mockman from "mockman-js";
 import { Routes, Route } from "react-router-dom";
@@ -19,7 +20,10 @@ function App() {
     <div className="App dark">
       <Navbar />
       <Routes>
+
         <Route path="/" element={<VideoListing />} />
+        <Route path="/explore" element={<VideoListing />} />
+        <Route path="/explore/:videoID" element={<SingleVideoPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/playlist" element={<PlaylistPage />} />
