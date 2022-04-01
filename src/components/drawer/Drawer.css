@@ -27,3 +27,20 @@
   cursor: pointer;
   background-color: var(--dt-light-bg);
 }
+
+/* compressed*/
+
+.nav-drawer.compressed {
+  width: fit-content;
+}
+
+.nav-drawer.compressed .drawer-item {
+  flex-direction: column;
+  align-content: center;
+  text-align: center;
+  max-width: 100px;
+}
+
+.nav-drawer.compressed .text {
+  font-size: 1.3rem;
+}
