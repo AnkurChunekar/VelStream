@@ -1,18 +1,29 @@
 import "./VideoCard.css";
 import { useState } from "react";
 import { VideoMenu } from "./VideoMenu";
+import { useNavigate } from "react-router-dom";
 
-export function VideoCard({ video, setIsPlaylistModalVisible, setPlaylistModalVideo }) {
+export function VideoCard({
+  video,
+  setIsPlaylistModalVisible,
+  setPlaylistModalVideo,
+}) {
+
   const [isVideoMenuVisible, setIsVideoMenuVisible] = useState(false);
   const { channelName, videoThumbnail, title, channelThumbnail, views, likes } =
     video;
-
-  const handleVideoMenuToggleClick = () => {
+  const navigate = useNavigate();
+  const handleVideoMenuToggleClick = (e) => {
+    e.stopPropagation();
     setIsVideoMenuVisible((pv) => !pv);
   };
 
+  const naviagteToVideo = () => {
+    navigate(`/explore/${video._id}`);
+  };
+
   return (
-    <div className="video-card flex flex-column">
+    <div onClick={naviagteToVideo} className="video-card flex flex-column">
       {/* thumnail image */}
       <img src={videoThumbnail} className="img-responsive" alt="" />
       <div className="flex details ai-start">

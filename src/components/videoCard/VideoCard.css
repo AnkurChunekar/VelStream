@@ -30,6 +30,7 @@
 .video-card {
   height: fit-content;
   position: relative;
+  cursor: pointer;
 }
 
 .video-card .tag {
