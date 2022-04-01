@@ -8,7 +8,8 @@ import {
   likeToggleClickHandler,
   watchLaterToggleClickHandler,
 } from "../../helpers";
-import { useAuth, useLike, useWatchLater } from "../../context";
+import { useAuth, useLike, useWatchLater, useHistory } from "../../context";
+import { addToHistoryService } from "../../services";
 import axios from "axios";
 
 export function SingleVideoPage() {
@@ -29,6 +30,8 @@ export function SingleVideoPage() {
     watchLaterDispatch,
   } = useWatchLater();
 
+  const { historyDispatch } = useHistory();
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -37,6 +40,14 @@ export function SingleVideoPage() {
         const response = await axios.get(`/api/video/${videoID}`);
         if (response.status === 200) {
           setVideoData(response.data.video);
+
+          if (user) {
+            addToHistoryService({
+              video: response.data.video,
+              token,
+              historyDispatch,
+            });
+          }
         } else {
           throw new Error("Error Occured while fetching video!");
         }
