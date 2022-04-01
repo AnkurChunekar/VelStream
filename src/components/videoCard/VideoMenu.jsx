@@ -1,12 +1,10 @@
-import {
-  addToLikesService,
-  removeFromLikesService,
-  addToWatchLaterService,
-  removeFromWatchLaterService,
-} from "../../services";
 import { useAuth, useLike, useWatchLater } from "../../context";
 import { useNavigate } from "react-router-dom";
-import { checkIfItemInArrOfObj } from "../../helpers";
+import {
+  checkIfItemInArrOfObj,
+  watchLaterToggleClickHandler,
+  likeToggleClickHandler
+} from "../../helpers";
 
 export function VideoMenu({
   video,
@@ -33,20 +31,21 @@ export function VideoMenu({
   const videoInLike =
     likeData.findIndex((item) => item._id === video._id) !== -1;
 
-  const LikeClickHandler = () => {
+  const LikeClickHandler = (e) => {
+    e.stopPropagation();
     setIsVideoMenuVisible(false);
-    if (user) {
-      if (videoInLike) {
-        removeFromLikesService({ video, token, likeDispatch });
-      } else {
-        addToLikesService({ video, token, likeDispatch });
-      }
-    } else {
-      navigate("/login");
-    }
+    likeToggleClickHandler({
+      user,
+      token,
+      likeData,
+      likeDispatch,
+      video,
+      navigate,
+    });
   };
 
-  const handleSaveToPlaylistClick = () => {
+  const handleSaveToPlaylistClick = (e) => {
+    e.stopPropagation();
     if (token) {
       setIsVideoMenuVisible(false);
       setIsPlaylistModalVisible(true);
@@ -62,18 +61,17 @@ export function VideoMenu({
     (item) => item._id === video._id
   );
 
-
-  const saveToWatchLaterClick = () => {
+  const saveToWatchLaterClick = (e) => {
     setIsVideoMenuVisible(false);
-    if (user) {
-      if (!videoInWatchlater) {
-        addToWatchLaterService({ video, token, watchLaterDispatch });
-      } else {
-        removeFromWatchLaterService({ video, token, watchLaterDispatch });
-      }
-    } else {
-      navigate("/login");
-    }
+    e.stopPropagation();
+    watchLaterToggleClickHandler({
+      user,
+      token,
+      watchLaterData,
+      watchLaterDispatch,
+      video,
+      navigate,
+    });
   };
 
   return (
