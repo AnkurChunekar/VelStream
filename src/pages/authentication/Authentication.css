@@ -55,7 +55,3 @@
 .authentication-container.dark .input-btn:hover {
   color: inherit;
 }
-
-.c-gap-1rem {
-  column-gap: 1rem;
-}
