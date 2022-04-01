@@ -1,0 +1,169 @@
+.iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.iframe-wrapper {
+  width: 1000px;
+  height: 578px;
+  flex-grow: 1;
+}
+
+.single-video-page {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.video-screen {
+  padding: 2rem;
+}
+
+.video-screen .channel-details {
+  border-top: solid 1.5px var(--dt-border-color);
+  border-bottom: solid 1.5px var(--dt-border-color);
+  padding: 1.5rem 0;
+}
+
+.video-screen .actions button {
+  color: var(--plain-gray);
+  font-size: 2rem;
+}
+
+.video-screen .actions button.active {
+  color: inherit;
+}
+
+.video-screen .actions button:hover {
+  color: inherit;
+}
+
+/* tool tip */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+/* Tooltip text */
+.tooltip .tooltip-text {
+  visibility: hidden;
+  width: 80px;
+  background-color: inherit;
+  background-color: var(--dt-light-bg);
+  text-align: center;
+  padding: 5px 0;
+  border-radius: var(--sm-radius);
+  position: absolute;
+  z-index: 1;
+  font-size: 1.4rem;
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+}
+
+.tooltip.top .tooltip-text {
+  bottom: 130%;
+  left: 50%;
+  margin-left: -40px;
+}
+
+/*  Video Notes */
+
+.video-notes {
+  width: 20%;
+}
+
+.video-notes textarea,
+.video-notes input {
+  background-color: var(--dt-light-bg);
+  color: inherit;
+  width: 100%;
+  box-shadow: none;
+  border: solid 1px var(--dt-light-bg);
+}
+
+.video-notes textarea:focus,
+.video-notes input:focus {
+  box-shadow: none;
+}
+
+.video-notes textarea {
+  resize: none;
+  height: 15rem;
+  overflow: auto;
+}
+
+@media screen and (max-width: 1440px) {
+  .iframe-wrapper {
+    width: 884px;
+    height: 512px;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .iframe-wrapper {
+    width: 750px;
+    height: 415px;
+  }
+}
+
+@media screen and (max-width: 1130px) {
+  .iframe-wrapper {
+    width: 100%;
+    height: 512px;
+  }
+
+  .single-video-page {
+    flex-direction: column;
+    margin-top: 350px;
+  }
+
+  .video-notes {
+    width: 100%;
+    padding: 2rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .iframe-wrapper {
+    width: 100%;
+    height: 415px;
+  }
+
+  .single-video-page {
+    flex-direction: column;
+    margin-top: 270px;
+  }
+
+  .nav-drawer {
+    display: none;
+  }
+}
+
+/*  
+
+1150
+
+665
+
+----
+
+884
+
+512
+
+
+958
+554
+
+
+screen sizes 
+1660
+
+1280
+
+
+
+
+*/
