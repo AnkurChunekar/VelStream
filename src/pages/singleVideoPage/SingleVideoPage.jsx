@@ -30,7 +30,7 @@ export function SingleVideoPage() {
     watchLaterDispatch,
   } = useWatchLater();
 
-  const { historyDispatch } = useHistory();
+  const { historyState: { historyData }, historyDispatch } = useHistory();
 
   const navigate = useNavigate();
 
@@ -40,14 +40,6 @@ export function SingleVideoPage() {
         const response = await axios.get(`/api/video/${videoID}`);
         if (response.status === 200) {
           setVideoData(response.data.video);
-
-          if (user) {
-            addToHistoryService({
-              video: response.data.video,
-              token,
-              historyDispatch,
-            });
-          }
         } else {
           throw new Error("Error Occured while fetching video!");
         }
@@ -55,7 +47,18 @@ export function SingleVideoPage() {
         alert(error);
       }
     })();
-  }, [historyDispatch, token, user, videoID]);
+  }, [videoID]);
+
+  useEffect(() => {
+    if (user && videoData) {
+      addToHistoryService({
+        video: videoData,
+        token,
+        historyDispatch,
+        historyData
+      });
+    }
+  }, [historyDispatch, user, token, videoData, historyData]);
 
   // like functionalities
 
