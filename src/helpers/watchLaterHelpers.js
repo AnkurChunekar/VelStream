@@ -1,7 +1,7 @@
 import { checkIfItemInArrOfObj } from "./utilityHelpers";
 import { addToWatchLaterService, removeFromWatchLaterService } from "../services";
 
-const watchLaterToggleClickHandler = ({
+const watchLaterToggleHandler = ({
   user,
   video,
   token,
@@ -28,4 +28,4 @@ const watchLaterToggleClickHandler = ({
   }
 };
 
-export { watchLaterToggleClickHandler };
+export { watchLaterToggleHandler };

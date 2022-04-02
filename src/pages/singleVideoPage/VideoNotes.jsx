@@ -1,4 +1,3 @@
-// import { videos } from "../../backend/db/videos";
 export function VideoNotes() {
   return (
     <div className="video-notes p-md1 p-rl0">
@@ -11,7 +10,8 @@ export function VideoNotes() {
           placeholder="Title..."
           name="title"
           className="input p-xxs m-xxxs m-rl0 bd-rad-sm"
-          required />
+          required
+        />
       </div>
 
       <textarea

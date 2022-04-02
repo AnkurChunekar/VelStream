@@ -8,7 +8,7 @@ import {
 import { usePlaylist, useAuth, useWatchLater } from "../../context";
 import {
   checkIfItemInArrOfObj,
-  watchLaterToggleClickHandler,
+  watchLaterToggleHandler,
   checkIfVideoInPlaylist,
 } from "../../helpers";
 import { useNavigate } from "react-router-dom";
@@ -17,7 +17,7 @@ export function PlaylistModal({
   setIsPlaylistModalVisible,
   playlistModalVideo,
 }) {
-  const [isCreatePlaylistInpVisible, setIsCreatePlaylistInpVisible] =
+  const [createPlaylistInpVisible, setCreatePlaylistInpVisible] =
     useState(false);
 
   const navigate = useNavigate();
@@ -43,12 +43,12 @@ export function PlaylistModal({
 
   const handleClosePlaylistModalClick = () => {
     setIsPlaylistModalVisible(false);
-    setIsCreatePlaylistInpVisible(false);
+    setCreatePlaylistInpVisible(false);
   };
 
   const handleCreatePlaylistClick = () => {
-    if (!isCreatePlaylistInpVisible) {
-      setIsCreatePlaylistInpVisible(true);
+    if (!createPlaylistInpVisible) {
+      setCreatePlaylistInpVisible(true);
     }
 
     if (
@@ -94,7 +94,7 @@ export function PlaylistModal({
   );
 
   const handleWatchLaterClick = () => {
-    watchLaterToggleClickHandler({
+    watchLaterToggleHandler({
       user,
       token,
       watchLaterData,
@@ -151,7 +151,7 @@ export function PlaylistModal({
         </section>
 
         <footer className="p-xs">
-          {isCreatePlaylistInpVisible ? (
+          {createPlaylistInpVisible ? (
             <input
               className="p-xxs m-xxs m-rl0 transparent-bg create-playlist-input"
               type="text"

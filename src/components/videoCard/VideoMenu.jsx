@@ -2,7 +2,7 @@ import { useAuth, useLike, useWatchLater } from "../../context";
 import { useNavigate } from "react-router-dom";
 import {
   checkIfItemInArrOfObj,
-  watchLaterToggleClickHandler,
+  watchLaterToggleHandler,
   likeToggleClickHandler
 } from "../../helpers";
 
@@ -64,7 +64,7 @@ export function VideoMenu({
   const saveToWatchLaterClick = (e) => {
     setIsVideoMenuVisible(false);
     e.stopPropagation();
-    watchLaterToggleClickHandler({
+    watchLaterToggleHandler({
       user,
       token,
       watchLaterData,

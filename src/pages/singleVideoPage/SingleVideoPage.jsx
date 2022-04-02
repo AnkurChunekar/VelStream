@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import {
   checkIfItemInArrOfObj,
   likeToggleClickHandler,
-  watchLaterToggleClickHandler,
+  watchLaterToggleHandler,
 } from "../../helpers";
 import { useAuth, useLike, useWatchLater, useHistory } from "../../context";
 import { addToHistoryService } from "../../services";
@@ -86,7 +86,7 @@ export function SingleVideoPage() {
   );
 
   const handleWatchLaterClick = () => {
-    watchLaterToggleClickHandler({
+    watchLaterToggleHandler({
       user,
       token,
       watchLaterData,

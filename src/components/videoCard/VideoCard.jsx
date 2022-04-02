@@ -15,7 +15,7 @@ export function VideoCard({
   const navigate = useNavigate();
   const handleVideoMenuToggleClick = (e) => {
     e.stopPropagation();
-    setIsVideoMenuVisible((pv) => !pv);
+    setIsVideoMenuVisible((previousState) => !previousState);
   };
 
   const naviagteToVideo = () => {
