@@ -11,7 +11,7 @@ const removeFromLikesService = async ({ video, token, likeDispatch }) => {
     if (response.status === 200) {
       likeDispatch({ type: "UPDATE_LIKES", payload: response.data.likes });
     } else {
-      throw new Error(`Error Occured!, Status Code: ${response.status}`);
+      throw new Error(`Error Occured!, Please Try Again`);
     }
   } catch (error) {
     alert(error);

@@ -18,7 +18,7 @@ const addToPlaylistService = async ({
         payload: response.data.playlist,
       });
     } else {
-      throw new Error(`Error Occured!, Status Code: ${response.status}`);
+      throw new Error(`Error Occured!, Please Try Again`);
     }
   } catch (error) {
     alert(error);

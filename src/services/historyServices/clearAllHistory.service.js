@@ -11,7 +11,7 @@ const clearAllHistoryService = async ({ token, historyDispatch }) => {
         payload: response.data.history,
       });
     } else {
-      throw new Error(`Error Occured!, Status Code: ${response.status}`);
+      throw new Error(`Error Occured!, Please Try Again`);
     }
   } catch (error) {
     alert(error);
