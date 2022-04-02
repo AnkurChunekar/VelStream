@@ -3,9 +3,15 @@ import {
   removeFromLikesService,
   removeFromPlaylistService,
   removeFromWatchLaterService,
-  removeFromHistoryService
+  removeFromHistoryService,
 } from "../../services";
-import { useAuth, useLike, usePlaylist, useWatchLater, useHistory } from "../../context";
+import {
+  useAuth,
+  useLike,
+  usePlaylist,
+  useWatchLater,
+  useHistory,
+} from "../../context";
 import { useLocation } from "react-router-dom";
 
 export function HorizontalCard({ video, playlistID = "" }) {
@@ -21,16 +27,18 @@ export function HorizontalCard({ video, playlistID = "" }) {
   const { videoThumbnail, videoLength, title, channelName } = video;
 
   const removeBtnClickHandler = () => {
-    if (location.pathname === "/liked") {
-      removeFromLikesService({ video, token, likeDispatch });
-    }
-
-    if (location.pathname === "/watchlater") {
-      removeFromWatchLaterService({ video, token, watchLaterDispatch });
-    }
-
-    if (location.pathname === "/history") {
-      removeFromHistoryService({ video, token, historyDispatch });
+    switch (location.pathname) {
+      case "/liked":
+        removeFromLikesService({ video, token, likeDispatch });
+        break;
+      case "/watchlater":
+        removeFromWatchLaterService({ video, token, watchLaterDispatch });
+        break;
+      case "/history":
+        removeFromHistoryService({ video, token, historyDispatch });
+        break;
+      default:
+        break;
     }
 
     if (location.pathname.includes("/playlist")) {
