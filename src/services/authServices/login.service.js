@@ -6,7 +6,8 @@ export const loginService = async ({
   navigate,
   likeDispatch,
   playlistDispatch,
-  watchLaterDispatch
+  watchLaterDispatch,
+  historyDispatch
 }) => {
   try {
     const response = await axios.post("/api/auth/login", {
@@ -35,6 +36,10 @@ export const loginService = async ({
         watchLaterDispatch({
           type: "UPDATE_WATCHLATER",
           payload: response.data.foundUser.watchlater,
+        })
+        historyDispatch({
+          type: "UPDATE_HISTORY",
+          payload: response.data.foundUser.history,
         })
         alert("Login Successfull!");
         navigate("/");

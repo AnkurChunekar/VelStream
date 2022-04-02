@@ -1,26 +1,40 @@
 import "./Drawer.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../../context";
 
 export function Drawer() {
   const {
     authState: { user },
   } = useAuth();
+  const location = useLocation();
+
+  const inSingleVideoPage = () => {
+    if (location.pathname.includes("explore")) {
+      if (location.pathname !== "/explore") {
+        return true;
+      }
+    }
+    return false;
+  };
 
   return (
-    <div className="nav-drawer dark fs-5">
+    <div
+      className={`nav-drawer dark fs-5 ${
+        inSingleVideoPage() ? "compressed" : ""
+      }`}
+    >
       <div className="drawer-item">
         <span>
           <i className="fa-solid fa-house"></i>
         </span>
-        <span> Home </span>
+        <span className="text"> Home </span>
       </div>
-      <Link to="/">
+      <Link to="/explore">
         <div className="drawer-item">
           <span>
             <i className="fa-regular fa-compass"></i>
           </span>
-          <span> Explore </span>
+          <span className="text"> Explore </span>
         </div>
       </Link>
       <Link to={user ? "/playlist" : "/login"}>
@@ -28,7 +42,7 @@ export function Drawer() {
           <span>
             <i className="fa-solid fa-list-check"></i>
           </span>
-          <span> Playlists </span>
+          <span className="text"> Playlists </span>
         </div>
       </Link>
       <Link to={user ? "/watchlater" : "/login"}>
@@ -36,7 +50,7 @@ export function Drawer() {
           <span>
             <i className="fa-regular fa-clock"></i>
           </span>
-          <span> Watch Later </span>
+          <span className="text"> Watch Later </span>
         </div>
       </Link>
       <Link to={user ? "/liked" : "/login"}>
@@ -44,7 +58,7 @@ export function Drawer() {
           <span>
             <i className="fa-solid fa-thumbs-up"></i>
           </span>
-          <span> Liked </span>
+          <span className="text"> Liked </span>
         </div>
       </Link>
       <Link to={user ? "/history" : "/login"}>
@@ -52,7 +66,7 @@ export function Drawer() {
           <span>
             <i className="fa-solid fa-clock-rotate-left"></i>
           </span>
-          <span> History </span>
+          <span className="text"> History </span>
         </div>
       </Link>
     </div>

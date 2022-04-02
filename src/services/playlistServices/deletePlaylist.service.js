@@ -17,7 +17,7 @@ const deletePlaylistService = async ({
         payload: response.data.playlists,
       });
     } else {
-      throw new Error(`Error Occured!, Status Code: ${response.status}`);
+      throw new Error(`Error Occured!, Please Try Again`);
     }
   } catch (error) {
     alert(error);

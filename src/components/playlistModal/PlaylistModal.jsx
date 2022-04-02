@@ -4,18 +4,23 @@ import {
   createNewPlaylistService,
   addToPlaylistService,
   removeFromPlaylistService,
-  addToWatchLaterService,
-  removeFromWatchLaterService,
 } from "../../services";
 import { usePlaylist, useAuth, useWatchLater } from "../../context";
-import { checkIfVideoInPlaylist, checkIfItemInArrOfObj } from "../../helpers";
+import {
+  checkIfItemInArrOfObj,
+  watchLaterToggleHandler,
+  checkIfVideoInPlaylist,
+} from "../../helpers";
+import { useNavigate } from "react-router-dom";
 
 export function PlaylistModal({
   setIsPlaylistModalVisible,
   playlistModalVideo,
 }) {
-  const [isCreatePlaylistInpVisible, setIsCreatePlaylistInpVisible] =
+  const [createPlaylistInpVisible, setCreatePlaylistInpVisible] =
     useState(false);
+
+  const navigate = useNavigate();
 
   const [newPlaylistData, setNewPlaylistData] = useState({
     title: "",
@@ -33,17 +38,17 @@ export function PlaylistModal({
   } = useWatchLater();
 
   const {
-    authState: { token },
+    authState: { user, token },
   } = useAuth();
 
   const handleClosePlaylistModalClick = () => {
     setIsPlaylistModalVisible(false);
-    setIsCreatePlaylistInpVisible(false);
+    setCreatePlaylistInpVisible(false);
   };
 
   const handleCreatePlaylistClick = () => {
-    if (!isCreatePlaylistInpVisible) {
-      setIsCreatePlaylistInpVisible(true);
+    if (!createPlaylistInpVisible) {
+      setCreatePlaylistInpVisible(true);
     }
 
     if (
@@ -89,19 +94,14 @@ export function PlaylistModal({
   );
 
   const handleWatchLaterClick = () => {
-    if (!videoInWatchlater) {
-      addToWatchLaterService({
-        video: playlistModalVideo,
-        token,
-        watchLaterDispatch,
-      });
-    } else {
-      removeFromWatchLaterService({
-        video: playlistModalVideo,
-        token,
-        watchLaterDispatch,
-      });
-    }
+    watchLaterToggleHandler({
+      user,
+      token,
+      watchLaterData,
+      watchLaterDispatch,
+      video: playlistModalVideo,
+      navigate,
+    });
   };
 
   return (
@@ -151,7 +151,7 @@ export function PlaylistModal({
         </section>
 
         <footer className="p-xs">
-          {isCreatePlaylistInpVisible ? (
+          {createPlaylistInpVisible ? (
             <input
               className="p-xxs m-xxs m-rl0 transparent-bg create-playlist-input"
               type="text"

@@ -14,7 +14,7 @@ const removeFromWatchLaterService = async ({
     if (response.status === 200) {
       watchLaterDispatch({ type: "UPDATE_WATCHLATER", payload: response.data.watchlater });
     } else {
-      throw new Error(`Error Occured!, Status Code: ${response.status}`);
+      throw new Error(`Error Occured!, Please Try Again`);
     }
   } catch (error) {
     alert(error);

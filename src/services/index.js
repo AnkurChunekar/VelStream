@@ -8,3 +8,6 @@ export { removeFromPlaylistService } from "./playlistServices/removeFromPlaylist
 export { deletePlaylistService } from "./playlistServices/deletePlaylist.service";
 export { addToWatchLaterService } from "./watchLaterServices/addToWatchLater.service";
 export { removeFromWatchLaterService } from "./watchLaterServices/removeFromWatchLater.service";
+export { addToHistoryService } from "./historyServices/addToHistory.service";
+export { removeFromHistoryService } from "./historyServices/removeFromHistory.service";
+export { clearAllHistoryService } from "./historyServices/clearAllHistory.service";
