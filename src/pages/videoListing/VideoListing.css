@@ -33,6 +33,13 @@
   border: solid 1.5px var(--dt-border-color);
 }
 
+.filter-container .chip.active {
+
+  background-color: var(--dt-font-color);
+  color:  var(--dt-border-color);
+
+}
+
 .scroller {
   overflow: auto;
 }
