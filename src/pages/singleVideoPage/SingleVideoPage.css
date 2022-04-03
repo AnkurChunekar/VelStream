@@ -140,3 +140,13 @@
     display: none;
   }
 }
+
+@media screen and (max-width: 500px) {
+  .iframe-wrapper {
+    height: 260px;
+  }
+
+  .single-video-page {
+    margin-top: 90px;
+  }
+}
