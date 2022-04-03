@@ -11,3 +11,4 @@ export { removeFromWatchLaterService } from "./watchLaterServices/removeFromWatc
 export { addToHistoryService } from "./historyServices/addToHistory.service";
 export { removeFromHistoryService } from "./historyServices/removeFromHistory.service";
 export { clearAllHistoryService } from "./historyServices/clearAllHistory.service";
+export { getDataService } from "./getDataServices/getData.service";
