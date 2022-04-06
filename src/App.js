@@ -18,12 +18,11 @@ import "./App.css";
 
 function App() {
   const { pathname } = useLocation();
-  console.log(pathname);
 
   return (
     <div className="App dark">
       {pathname !== "/explore" && pathname !== "/" ? <Navbar /> : null}
-      
+
       <ToastContainer
         position="bottom-right"
         autoClose={2500}
