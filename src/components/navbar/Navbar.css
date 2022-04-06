@@ -81,41 +81,34 @@ a {
 
 /* Nav searchbar starts  */
 
-#nav-searchbar .search-box {
-  column-gap: 2rem;
-  background-color: var(--plain-white);
-  height: 14%;
+.navigation .search-container {
+  max-width: 500px;
+  flex-grow: 1;
+  flex-shrink: 2;
+  margin: 0 2rem;
+  position: relative;
 }
 
-#nav-searchbar .search-box input {
-  border: none;
-  width: 65%;
-  outline: none;
+.navigation .search-input {
+  width: 100%;
+  background: var(--dt-primary-bg);
+  border: solid 1px gray;
+  font-size: 1.6rem;
+  color: (var(--dt-font-color));
 }
 
-#nav-searchbar .search-box i {
-  cursor: pointer;
-  font-size: 2rem;
+.navigation .search-icon {
+  font-size: 1.4rem;
+  padding: 0.55rem 1rem;
+  background-color: var(--dt-light-bg);
+  border: solid 1px gray;
+  border-left: none;
+  color: var(--dt-font-color);
 }
 
-#nav-searchbar .searchbar-bg {
-  background-color: rgba(0, 0, 0, 0.6);
-  height: 86%;
-}
-
-#nav-searchbar {
-  display: none;
-}
-
-#nav-searchbar.active {
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  z-index: 11;
+.navigation .search-close-btn {
+  right: 45px;
+  position: absolute;
 }
 
 /* Nav searchbar ends */

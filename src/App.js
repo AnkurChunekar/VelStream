@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import {
   User,
@@ -17,10 +17,13 @@ import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
 function App() {
+  const { pathname } = useLocation();
+  console.log(pathname);
+
   return (
     <div className="App dark">
-      <Navbar />
-
+      {pathname !== "/explore" && pathname !== "/" ? <Navbar /> : null}
+      
       <ToastContainer
         position="bottom-right"
         autoClose={2500}
@@ -33,7 +36,6 @@ function App() {
         draggable
         pauseOnHover
       />
-
       <Routes>
         <Route path="/" element={<VideoListing />} />
         <Route path="/explore" element={<VideoListing />} />

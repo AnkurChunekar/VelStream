@@ -1,9 +1,12 @@
-import "./Navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../../context";
+import "./Navbar.css";
 
-export function Navbar() {
-  const { authState: { user } } = useAuth();
+export function Navbar({ searchInput, setSearchInput }) {
+  const { pathname } = useLocation();
+  const {
+    authState: { user },
+  } = useAuth();
 
   return (
     <>
@@ -23,30 +26,40 @@ export function Navbar() {
           <a href="/pages/login/login.html">Login</a>
         </div>
         <div className="navigation-ham-bg" />
+
+        {pathname === "/" || pathname === "/explore" ? (
+          <div className="flex flex-row ai-center search-container">
+            <input
+              type="text"
+              className="p-xxxs search-input"
+              placeholder="Type and press Enter key"
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)}
+            />
+            <button className="search-icon">
+              <i className="fas fa-search" title="Search" />
+            </button>
+
+            {searchInput ? (
+              <button
+                onClick={() => setSearchInput("")}
+                className="search-close-btn btn-unset"
+              >
+                <i className="fas fa-times" title="Close" />
+              </button>
+            ) : null}
+          </div>
+        ) : null}
+
         <div className="nav-actions">
-          <span className="m-xs">
-            <i id="nav-search-icon" className="fas fa-search" />
-          </span>
           <Link to={user ? "/user" : "/login"}>
-            <span className="m-xs">
-              <i className={`fa-solid ${user ? "fa-user-check" : "fa-user-xmark"}`}></i>
+            <i className="fa-solid fa-user"></i>
+            <span className="fs-5">
+              {user ? ` Hi, ${user.firstName}` : "Login"}
             </span>
           </Link>
         </div>
       </nav>
-      {/* Search bar starts */}
-      <div id="nav-searchbar" className="input-wrapper">
-        <div className="search-box flex flex-center">
-          <i className="fas fa-search" />
-          <input
-            type="text"
-            placeholder="search for products, brands and more..."
-          />
-          <i id="nav-close-icon" className="fas fa-times" />
-        </div>
-        <div id="nav-searchbar-bg" className="searchbar-bg" />
-      </div>
-      {/* Search bar ends */}
     </>
   );
 }

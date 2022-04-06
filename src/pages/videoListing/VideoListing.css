@@ -10,6 +10,10 @@
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
+.video-grid.fixed {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 300px));
+}
+
 .video-grid-wrapper {
   width: 100%;
   max-width: 1440px;
