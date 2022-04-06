@@ -6,11 +6,11 @@ export function Drawer() {
   const {
     authState: { user },
   } = useAuth();
-  const location = useLocation();
+  const { pathname } = useLocation();
 
   const inSingleVideoPage = () => {
-    if (location.pathname.includes("explore")) {
-      if (location.pathname !== "/explore") {
+    if (pathname.includes("explore")) {
+      if (pathname !== "/explore") {
         return true;
       }
     }
@@ -23,12 +23,6 @@ export function Drawer() {
         inSingleVideoPage() ? "compressed" : ""
       }`}
     >
-      <div className="drawer-item">
-        <span>
-          <i className="fa-solid fa-house"></i>
-        </span>
-        <span className="text"> Home </span>
-      </div>
       <Link to="/explore">
         <div className="drawer-item">
           <span>

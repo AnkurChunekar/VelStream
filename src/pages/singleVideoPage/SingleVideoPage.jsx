@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import axios from "axios";
 import { useAuth, useLike, useWatchLater, useHistory } from "../../context";
-import { addToHistoryService } from "../../services";
+import { addToHistoryService, getDataService } from "../../services";
 import {
   checkIfItemInArrOfObj,
   likeToggleClickHandler,
@@ -39,19 +37,9 @@ export function SingleVideoPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    (async () => {
-      try {
-        const response = await axios.get(`/api/video/${videoID}`);
-        if (response.status === 200) {
-          setVideoData(response.data.video);
-        } else {
-          throw new Error("Error Occured while fetching video!");
-        }
-      } catch (error) {
-        toast.error(error.response.data.errors[0]);
-        console.error(error);
-      }
-    })();
+    getDataService(`/api/video/${videoID}`, (response) =>
+      setVideoData(response.data.video)
+    );
   }, [videoID]);
 
   useEffect(() => {
