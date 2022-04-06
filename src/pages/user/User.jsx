@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { useAuth, useLike, usePlaylist, useWatchLater, useHistory } from "../../context";
 
 export function User() {
@@ -12,7 +13,7 @@ export function User() {
 
 
   const handleLogoutClick = () => {
-    alert("Logout Successfull!");
+    toast.success("Logout Successfull!");
     navigate("/");
     localStorage.removeItem("token");
     authDispatch({ type: "LOGOUT" });

@@ -1,16 +1,15 @@
-import "./SingleVideoPage.css";
-import { Drawer, PlaylistModal } from "../../components";
-import { VideoNotes } from "./VideoNotes";
-import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { useAuth, useLike, useWatchLater, useHistory } from "../../context";
+import { addToHistoryService, getDataService } from "../../services";
 import {
   checkIfItemInArrOfObj,
   likeToggleClickHandler,
   watchLaterToggleHandler,
 } from "../../helpers";
-import { useAuth, useLike, useWatchLater, useHistory } from "../../context";
-import { addToHistoryService } from "../../services";
-import axios from "axios";
+import { Drawer, PlaylistModal, CircularLoader } from "../../components";
+import { VideoNotes } from "./VideoNotes";
+import "./SingleVideoPage.css";
 
 export function SingleVideoPage() {
   const [videoData, setVideoData] = useState(false);
@@ -30,23 +29,17 @@ export function SingleVideoPage() {
     watchLaterDispatch,
   } = useWatchLater();
 
-  const { historyState: { historyData }, historyDispatch } = useHistory();
+  const {
+    historyState: { historyData },
+    historyDispatch,
+  } = useHistory();
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    (async () => {
-      try {
-        const response = await axios.get(`/api/video/${videoID}`);
-        if (response.status === 200) {
-          setVideoData(response.data.video);
-        } else {
-          throw new Error("Error Occured while fetching video!");
-        }
-      } catch (error) {
-        alert(error);
-      }
-    })();
+    getDataService(`/api/video/${videoID}`, (response) =>
+      setVideoData(response.data.video)
+    );
   }, [videoID]);
 
   useEffect(() => {
@@ -55,7 +48,7 @@ export function SingleVideoPage() {
         video: videoData,
         token,
         historyDispatch,
-        historyData
+        historyData,
       });
     }
   }, [historyDispatch, user, token, videoData, historyData]);
@@ -174,7 +167,9 @@ export function SingleVideoPage() {
           <VideoNotes />
         </div>
       ) : (
-        <h1> Loading..... </h1>
+        <div className="loader-container">
+          <CircularLoader />
+        </div>
       )}
       {isPlaylistModalVisible ? (
         <PlaylistModal

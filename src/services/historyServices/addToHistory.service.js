@@ -30,7 +30,7 @@ const addToHistoryService = async ({
         throw new Error(`Error Occured!, Please Try Again`);
       }
     } catch (error) {
-      alert(error);
+      console.error(error);
     }
   }
 };
