@@ -32,7 +32,7 @@ export function Navbar({ searchInput, setSearchInput }) {
             <input
               type="text"
               className="p-xxxs search-input"
-              placeholder="Type and press Enter key"
+              placeholder="Search for all videos here..."
               value={searchInput}
               onChange={(e) => setSearchInput(e.target.value)}
             />
@@ -55,7 +55,7 @@ export function Navbar({ searchInput, setSearchInput }) {
           <Link to={user ? "/user" : "/login"}>
             <i className="fa-solid fa-user"></i>
             <span className="fs-5">
-              {user ? ` Hi, ${user.firstName}` : "Login"}
+              {user ? ` Hi, ${user.firstName}` : " Login"}
             </span>
           </Link>
         </div>
