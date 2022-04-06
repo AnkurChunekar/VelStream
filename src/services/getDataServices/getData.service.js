@@ -1,16 +1,18 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
-  const getDataService = async (url, setterFn) => {
-    try {
-      const response = await axios.get(url);
-      if (response.status === 200) {
-        setterFn(response);
-      } else {
-        throw new Error("Error Occured, Please Try Again");
-      }
-    } catch (error) {
-      alert(error);
+const getDataService = async (url, setterFn) => {
+  try {
+    const response = await axios.get(url);
+    if (response.status === 200) {
+      setterFn(response);
+    } else {
+      throw new Error("Error Occured, Please Try Again");
     }
-  };
+  } catch (error) {
+    toast.error(error.response.data.errors[0]);
+    console.error(error);
+  }
+};
 
-  export {getDataService};
+export { getDataService };

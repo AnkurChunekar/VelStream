@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export const signupService = async (userData, authDispatch, navigate) => {
   try {
@@ -21,7 +22,7 @@ export const signupService = async (userData, authDispatch, navigate) => {
             token: response.data.encodedToken,
           },
         });
-        alert("Signup Successfull!");
+        toast.success("Signup Successfull!");
         navigate("/");
         break;
       case 422:
@@ -32,6 +33,7 @@ export const signupService = async (userData, authDispatch, navigate) => {
         throw new Error("Unknown Error Occured.");
     }
   } catch (error) {
-    alert("Error Occured, Please Try Again.", error);
+    toast.error(error.response.data.errors[0]);
+    console.error(error);
   }
 };

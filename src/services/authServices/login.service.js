@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export const loginService = async ({
   userData,
@@ -41,7 +42,7 @@ export const loginService = async ({
           type: "UPDATE_HISTORY",
           payload: response.data.foundUser.history,
         })
-        alert("Login Successfull!");
+        toast.success("Login Successfull!");
         navigate("/");
         break;
       case 404:
@@ -54,6 +55,7 @@ export const loginService = async ({
         throw new Error("Unknown Error Occured.");
     }
   } catch (error) {
-    alert(error);
+    toast.error(error.response.data.errors[0]);
+console.error(error);
   }
 };

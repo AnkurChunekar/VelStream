@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const addToWatchLaterService = async ({ video, token, watchLaterDispatch }) => {
   try {
@@ -12,12 +13,17 @@ const addToWatchLaterService = async ({ video, token, watchLaterDispatch }) => {
       }
     );
     if (response.status === 201) {
-      watchLaterDispatch({ type: "UPDATE_WATCHLATER", payload: response.data.watchlater });
+      watchLaterDispatch({
+        type: "UPDATE_WATCHLATER",
+        payload: response.data.watchlater,
+      });
+      toast.success("Added to Watch Later");
     } else {
       throw new Error(`Error Occured!, Please Try Again`);
     }
   } catch (error) {
-    alert(error);
+    toast.error(error.response.data.errors[0]);
+    console.error(error);
   }
 };
 

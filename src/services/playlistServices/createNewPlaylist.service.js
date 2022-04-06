@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const createNewPlaylistService = async ({
   requestBody,
@@ -16,11 +17,13 @@ const createNewPlaylistService = async ({
         type: "UPDATE_PLAYLISTS",
         payload: response.data.playlists,
       });
+      toast.success("New Playlist Created!");
     } else {
       throw new Error(`Error Occured!, Please Try Again`);
     }
   } catch (error) {
-    alert(error);
+    toast.error(error.response.data.errors[0]);
+    console.error(error);
   }
 };
 
