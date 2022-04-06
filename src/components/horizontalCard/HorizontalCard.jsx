@@ -1,10 +1,4 @@
-import "./HorizontalCard.css";
-import {
-  removeFromLikesService,
-  removeFromPlaylistService,
-  removeFromWatchLaterService,
-  removeFromHistoryService,
-} from "../../services";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   useAuth,
   useLike,
@@ -12,13 +6,20 @@ import {
   useWatchLater,
   useHistory,
 } from "../../context";
-import { useLocation } from "react-router-dom";
+import {
+  removeFromLikesService,
+  removeFromPlaylistService,
+  removeFromWatchLaterService,
+  removeFromHistoryService,
+} from "../../services";
+import "./HorizontalCard.css";
 
 export function HorizontalCard({ video, playlistID = "" }) {
+  const location = useLocation();
+  const navigate = useNavigate();
   const {
     authState: { token },
   } = useAuth();
-  const location = useLocation();
   const { likeDispatch } = useLike();
   const { playlistDispatch } = usePlaylist();
   const { watchLaterDispatch } = useWatchLater();
@@ -26,7 +27,8 @@ export function HorizontalCard({ video, playlistID = "" }) {
 
   const { videoThumbnail, videoLength, title, channelName } = video;
 
-  const removeBtnClickHandler = () => {
+  const removeBtnClickHandler = (e) => {
+    e.stopPropagation();
     switch (location.pathname) {
       case "/liked":
         removeFromLikesService({ video, token, likeDispatch });
@@ -52,7 +54,7 @@ export function HorizontalCard({ video, playlistID = "" }) {
   };
 
   return (
-    <div className="horizontal-card flex p-s">
+    <div onClick={() => navigate(`/explore/${video._id}`)} className="horizontal-card flex p-s">
       <div className="banner">
         <img
           src={videoThumbnail}

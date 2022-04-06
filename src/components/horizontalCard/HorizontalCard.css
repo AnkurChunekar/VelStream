@@ -3,6 +3,7 @@
   width: 100%;
   column-gap: 1rem;
   position: relative;
+  cursor: pointer;
 }
 
 .horizontal-card:hover {
