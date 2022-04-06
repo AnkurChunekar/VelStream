@@ -3,14 +3,14 @@ import { useParams, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { useAuth, useLike, useWatchLater, useHistory } from "../../context";
-import { Drawer, PlaylistModal } from "../../components";
-import { VideoNotes } from "./VideoNotes";
 import { addToHistoryService } from "../../services";
 import {
   checkIfItemInArrOfObj,
   likeToggleClickHandler,
   watchLaterToggleHandler,
 } from "../../helpers";
+import { Drawer, PlaylistModal, CircularLoader } from "../../components";
+import { VideoNotes } from "./VideoNotes";
 import "./SingleVideoPage.css";
 
 export function SingleVideoPage() {
@@ -179,7 +179,9 @@ export function SingleVideoPage() {
           <VideoNotes />
         </div>
       ) : (
-        <h1> Loading..... </h1>
+        <div className="loader-container">
+          <CircularLoader />
+        </div>
       )}
       {isPlaylistModalVisible ? (
         <PlaylistModal

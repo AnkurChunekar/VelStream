@@ -5,3 +5,4 @@ export { VideoCard } from "./videoCard/VideoCard";
 export { ContentSidebar } from "./contentSidebar/ContentSidebar";
 export { HorizontalCard } from "./horizontalCard/HorizontalCard";
 export { PlaylistModal } from "./playlistModal/PlaylistModal";
+export { CircularLoader } from "./loaders/circular/CircularLoader";

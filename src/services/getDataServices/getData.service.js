@@ -1,7 +1,7 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const getDataService = async (url, setterFn) => {
+const getDataService = async (url, setterFn, setIsLoading) => {
   try {
     const response = await axios.get(url);
     if (response.status === 200) {
@@ -12,6 +12,8 @@ const getDataService = async (url, setterFn) => {
   } catch (error) {
     toast.error(error.response.data.errors[0]);
     console.error(error);
+  } finally {
+    setIsLoading(false);
   }
 };
 

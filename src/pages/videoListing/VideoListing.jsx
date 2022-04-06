@@ -1,8 +1,13 @@
-import "./VideoListing.css";
 import { useEffect, useState, Fragment } from "react";
-import { Drawer, VideoCard, PlaylistModal } from "../../components";
-import { capitalizeFirstWordOfString } from "../../helpers";
 import { getDataService } from "../../services";
+import { capitalizeFirstWordOfString } from "../../helpers";
+import {
+  Drawer,
+  VideoCard,
+  PlaylistModal,
+  CircularLoader,
+} from "../../components";
+import "./VideoListing.css";
 
 export function VideoListing() {
   const [videoData, setVideoData] = useState([]);
@@ -12,12 +17,13 @@ export function VideoListing() {
   });
   const [isPlaylistModalVisible, setIsPlaylistModalVisible] = useState(false);
   const [playlistModalVideo, setPlaylistModalVideo] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
   const { categories, selectedCategory } = categoryData;
 
   useEffect(() => {
     getDataService("/api/videos", (response) =>
       setVideoData(response.data.videos)
-    );
+    , setIsLoading);
   }, []);
 
   useEffect(() => {
@@ -78,15 +84,21 @@ export function VideoListing() {
           ) : null}
 
           <div className="video-grid">
-            {getCategorizedData().map((video) => (
-              <Fragment key={video._id}>
-                <VideoCard
-                  video={video}
-                  setIsPlaylistModalVisible={setIsPlaylistModalVisible}
-                  setPlaylistModalVideo={setPlaylistModalVideo}
-                />
-              </Fragment>
-            ))}
+            {isLoading ? (
+              <div className="loader-container">
+                <CircularLoader />
+              </div>
+            ) : (
+              getCategorizedData().map((video) => (
+                <Fragment key={video._id}>
+                  <VideoCard
+                    video={video}
+                    setIsPlaylistModalVisible={setIsPlaylistModalVisible}
+                    setPlaylistModalVideo={setPlaylistModalVideo}
+                  />
+                </Fragment>
+              ))
+            )}
           </div>
         </div>
       </div>
