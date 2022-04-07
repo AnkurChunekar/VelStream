@@ -30,13 +30,15 @@ a {
   color: var(--dark-color);
 }
 
-.navigation .navigation-ham-menu {
+.navigation .navigation-ham-menu.active {
   position: fixed;
-  box-shadow: 2px 0 5px var(--plain-gray);
+  box-shadow: 2px 0 5px black;
   max-width: 300px;
   width: 100%;
   z-index: 100;
   row-gap: 3rem;
+  display: flex;
+  background-color: inherit;
 }
 
 .navigation-ham-bg {
@@ -62,14 +64,39 @@ a {
   color: var(--primary-color);
 }
 
+.navigation .ham-icon {
+  display: none;
+}
+
+.navigation .ham-close-icon {
+  align-self: flex-end;
+}
+
 .nav-actions .icon-badge {
   top: -15px;
   right: -5px;
 }
 
 @media screen and (max-width: 768px) {
+  .navigation .ham-icon {
+    display: block;
+    font-size: 2rem;
+  }
+
   .navigation .nav-link {
     display: none;
+  }
+
+  .navigation .nav-brand {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  .navigation .brand-name {
+    font-size: 1.8rem;
+    letter-spacing: 3px;
+    margin: 0 0 0 5px;
   }
 
   .nav-actions .icon {
@@ -109,6 +136,20 @@ a {
 .navigation .search-close-btn {
   right: 45px;
   position: absolute;
+}
+
+@media screen and (max-width: 768px) {
+  .navigation .search-container {
+    min-width: 100%;
+    flex-grow: 1;
+    flex-shrink: 0;
+    margin: 1rem 0;
+    order: 3;
+  }
+
+  .navigation {
+    flex-wrap: wrap;
+  }
 }
 
 /* Nav searchbar ends */
