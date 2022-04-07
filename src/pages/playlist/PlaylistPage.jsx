@@ -1,9 +1,9 @@
-import "./PlaylistPage.css";
-import { Drawer } from "../../components";
 import { Fragment } from "react";
-import { Playlist } from "./Playlist";
-import { usePlaylist } from "../../context";
 import { Link } from "react-router-dom";
+import { usePlaylist } from "../../context";
+import { Drawer } from "../../components";
+import { Playlist } from "./Playlist";
+import "./PlaylistPage.css";
 
 export function PlaylistPage() {
   const {

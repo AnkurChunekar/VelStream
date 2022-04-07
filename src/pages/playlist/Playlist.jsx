@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { deletePlaylistService } from "../../services";
 import { useAuth, usePlaylist } from "../../context";
+import { deletePlaylistService } from "../../services";
 
 export function Playlist({ title, videos = 0, playlistId }) {
   const navigate = useNavigate();

@@ -1,7 +1,7 @@
-import "./VideoCard.css";
 import { useState } from "react";
-import { VideoMenu } from "./VideoMenu";
 import { useNavigate } from "react-router-dom";
+import { VideoMenu } from "./VideoMenu";
+import "./VideoCard.css";
 
 export function VideoCard({
   video,

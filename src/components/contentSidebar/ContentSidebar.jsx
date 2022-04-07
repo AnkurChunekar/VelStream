@@ -1,6 +1,6 @@
-import "./ContentSidebar.css";
-import { clearAllHistoryService } from "../../services";
 import { useHistory, useAuth } from "../../context";
+import { clearAllHistoryService } from "../../services";
+import "./ContentSidebar.css";
 
 export function ContentSidebar({ pageTitle, sidebarBanner, videoCount }) {
   const defaultBannerSrc =

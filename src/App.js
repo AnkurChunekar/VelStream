@@ -11,6 +11,7 @@ import {
   Signup,
   SinglePlaylistPage,
   SingleVideoPage,
+  ErrorPage
 } from "./pages";
 import { Navbar } from "./components";
 import "react-toastify/dist/ReactToastify.css";
@@ -47,6 +48,7 @@ function App() {
         <Route path="/history" element={<History />} />
         <Route path="/user" element={<User />} />
         <Route path="/playlist/:playlistID" element={<SinglePlaylistPage />} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </div>
   );

@@ -1,9 +1,11 @@
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../../context";
 import "./Navbar.css";
 
 export function Navbar({ searchInput, setSearchInput }) {
   const { pathname } = useLocation();
+  const [isHamMenuVisible, setIsHamMenuVisible] = useState(false);
   const {
     authState: { user },
   } = useAuth();
@@ -12,20 +14,69 @@ export function Navbar({ searchInput, setSearchInput }) {
     <>
       <nav className="navigation dark">
         <div className="nav-brand">
-          <i className="fas fa-bars ham-icon" id="ham-icon" />
+          <button
+            onClick={() => setIsHamMenuVisible((pv) => !pv)}
+            className="btn-unset"
+          >
+            <i className="fas fa-bars ham-icon" id="ham-icon" />
+          </button>
           <Link to="/explore" className="brand-name">
             VelStream
           </Link>
         </div>
-        <div className="navigation-ham-menu" id="navigation-ham-menu">
-          <i className="fas fa-times" id="ham-close-icon" />
-          <a href="/index.html">Home</a>
-          <a href="/pages/products-page/products.html">Products</a>
-          <a href="/pages/wishlist/wishlist.html">Wishlist</a>
-          <a href="/pages/cart-management/cart-management.html">Orders</a>
-          <a href="/pages/login/login.html">Login</a>
-        </div>
-        <div className="navigation-ham-bg" />
+
+        {isHamMenuVisible ? (
+          <div className="navigation-ham-menu active" id="navigation-ham-menu">
+            <button
+              onClick={() => setIsHamMenuVisible((pv) => !pv)}
+              className="btn-unset ham-close-icon"
+            >
+              <i className="fas fa-times" />
+            </button>
+            <Link to="/explore">
+              <div className="drawer-item">
+                <span>
+                  <i className="fa-regular fa-compass m-xs m-tb0"></i>
+                </span>
+                <span className="text"> Explore </span>
+              </div>
+            </Link>
+            <Link to={user ? "/playlist" : "/login"}>
+              <div className="drawer-item">
+                <span>
+                  <i className="fa-solid fa-list-check m-xs m-tb0"></i>
+                </span>
+                <span className="text"> Playlists </span>
+              </div>
+            </Link>
+            <Link to={user ? "/watchlater" : "/login"}>
+              <div className="drawer-item">
+                <span>
+                  <i className="fa-regular fa-clock m-xs m-tb0"></i>
+                </span>
+                <span className="text"> Watch Later </span>
+              </div>
+            </Link>
+            <Link to={user ? "/liked" : "/login"}>
+              <div className="drawer-item">
+                <span>
+                  <i className="fa-solid fa-thumbs-up m-xs m-tb0"></i>
+                </span>
+                <span className="text"> Liked </span>
+              </div>
+            </Link>
+            <Link to={user ? "/history" : "/login"}>
+              <div className="drawer-item">
+                <span>
+                  <i className="fa-solid fa-clock-rotate-left m-xs m-tb0"></i>
+                </span>
+                <span className="text"> History </span>
+              </div>
+            </Link>
+          </div>
+        ) : null}
+
+        {/* <div className="navigation-ham-bg" /> */}
 
         {pathname === "/" || pathname === "/explore" ? (
           <div className="flex flex-row ai-center search-container">

@@ -1,6 +1,6 @@
-import { ContentSidebar, Drawer, HorizontalCard } from "../../components";
 import { Fragment } from "react";
 import { useHistory } from "../../context";
+import { ContentSidebar, Drawer, HorizontalCard } from "../../components";
 
 export function History() {
   const {
