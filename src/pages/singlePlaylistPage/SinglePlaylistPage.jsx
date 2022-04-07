@@ -1,8 +1,8 @@
-import "./SinglePlaylistPage.css";
-import { Drawer, ContentSidebar, HorizontalCard } from "../../components";
+import { Fragment } from "react";
 import { useParams } from "react-router-dom";
 import { usePlaylist } from "../../context";
-import { Fragment } from "react";
+import { Drawer, ContentSidebar, HorizontalCard } from "../../components";
+import "./SinglePlaylistPage.css";
 
 export function SinglePlaylistPage() {
   const { playlistID } = useParams();

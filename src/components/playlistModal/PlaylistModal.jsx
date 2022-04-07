@@ -1,5 +1,5 @@
-import "./PlaylistModal.css";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   createNewPlaylistService,
   addToPlaylistService,
@@ -11,7 +11,7 @@ import {
   watchLaterToggleHandler,
   checkIfVideoInPlaylist,
 } from "../../helpers";
-import { useNavigate } from "react-router-dom";
+import "./PlaylistModal.css";
 
 export function PlaylistModal({
   setIsPlaylistModalVisible,

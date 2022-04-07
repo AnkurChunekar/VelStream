@@ -1,7 +1,6 @@
-import "./Authentication.css";
-import { PasswordInput, TextInput } from "./components";
-import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { PasswordInput, TextInput } from "./components";
 import {
   useAuth,
   useLike,
@@ -11,6 +10,7 @@ import {
 } from "../../context";
 import { loginService } from "../../services";
 import { checkIfAllInputsAreNotEmpty } from "../../helpers";
+import "./Authentication.css";
 
 export function Login() {
   const [userData, setUserData] = useState({
