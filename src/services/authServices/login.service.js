@@ -8,14 +8,14 @@ export const loginService = async ({
   likeDispatch,
   playlistDispatch,
   watchLaterDispatch,
-  historyDispatch
+  historyDispatch,
 }) => {
   try {
     const response = await axios.post("/api/auth/login", {
       email: userData.email,
       password: userData.password,
     });
-    
+
     switch (response.status) {
       case 200:
         localStorage.setItem("token", response.data.encodedToken);
@@ -33,15 +33,15 @@ export const loginService = async ({
         playlistDispatch({
           type: "UPDATE_PLAYLISTS",
           payload: response.data.foundUser.playlists,
-        })
+        });
         watchLaterDispatch({
           type: "UPDATE_WATCHLATER",
           payload: response.data.foundUser.watchlater,
-        })
+        });
         historyDispatch({
           type: "UPDATE_HISTORY",
           payload: response.data.foundUser.history,
-        })
+        });
         toast.success("Login Successfull!");
         navigate("/");
         break;
@@ -56,6 +56,6 @@ export const loginService = async ({
     }
   } catch (error) {
     toast.error(error.response.data.errors[0]);
-console.error(error);
+    console.error(error);
   }
 };

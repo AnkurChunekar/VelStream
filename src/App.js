@@ -25,11 +25,11 @@ function App() {
       {pathname !== "/explore" && pathname !== "/" ? <Navbar /> : null}
 
       <ToastContainer
-        position="bottom-right"
+        position="top-right"
         autoClose={2500}
         hideProgressBar={false}
         newestOnTop={false}
-        theme={"colored"}
+        theme={"dark"}
         closeOnClick
         rtl={false}
         pauseOnFocusLoss
