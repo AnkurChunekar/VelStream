@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { PasswordInput, TextInput } from "./components";
 import {
   useAuth,
@@ -29,7 +30,7 @@ export function Login() {
     e.preventDefault();
 
     if (!checkIfAllInputsAreNotEmpty(userData)) {
-      alert("Email and Password cannot be empty!");
+      toast.error("Email and Password cannot be empty!");
     } else {
       loginService({
         userData,
