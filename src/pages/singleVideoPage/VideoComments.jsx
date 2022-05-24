@@ -1,14 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAuth, useComments } from "../../context";
 import {
   addCommentService,
   deleteCommentService,
   editCommentService,
+  getCommentsService,
 } from "../../services";
 import userAvatar from "../../assets/user-avatar.jpg";
 import { toast } from "react-toastify";
 
-function CommentCard({ commentData, token, commentsDispatch, videoId }) {
+function CommentCard({ commentData, token, commentsDispatch, videoId, user }) {
   const [editMode, setEditMode] = useState(false);
   const [editText, setEditText] = useState("");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -25,7 +26,7 @@ function CommentCard({ commentData, token, commentsDispatch, videoId }) {
         editCommentService(
           token,
           videoId,
-          { ...commentData, text: editText},
+          { ...commentData, text: editText },
           commentsDispatch
         );
 
@@ -74,7 +75,8 @@ function CommentCard({ commentData, token, commentsDispatch, videoId }) {
           )}
         </div>
 
-        {editMode ? null : (
+        {editMode ||
+        commentData.username !== user.firstName + " " + user.lastName ? null : (
           <button
             onClick={() => {
               setIsMenuOpen((prev) => !prev);
@@ -121,6 +123,10 @@ export function VideoComments({ videoId }) {
   } = useComments();
 
   const currVideoComments = comments.find((item) => item._id === videoId);
+
+  useEffect(() => {
+    if (token) getCommentsService(token, commentsDispatch);
+  }, [commentsDispatch, token]);
 
   const addCommentHandler = () => {
     if (token) {
@@ -181,6 +187,7 @@ export function VideoComments({ videoId }) {
                 commentsDispatch={commentsDispatch}
                 commentData={item}
                 key={item._id}
+                user={user}
               />
             ))
           : null}

@@ -77,7 +77,36 @@ export function makeServer({ environment = "development" } = {}) {
           watchlater: [],
           history: [],
           playlists: [],
-          comments: [],
+          comments: [
+            {
+              _id: "Wo5dMEP_BbI02",
+              vidComments: [
+                {
+                  text: "hello",
+                  updatedAt: "2022-05-24T15:23:56+05:30",
+                  username: "Guest User",
+                  _id: "b249fdd8-aafb-494d-94f1-76e690e36d9c",
+                },
+                {
+                  text: "Spiderman is awesome",
+                  updatedAt: "2022-05-24T15:23:56+05:30",
+                  username: "Raj malhotra",
+                  _id: "b269gddd8daf5-494d-94f1-76e690e36d9c",
+                },
+              ],
+            },
+            {
+              _id: "Wo5dMEP_BbI01",
+              vidComments: [
+                {
+                  text: "Batman is the best!",
+                  updatedAt: "2022-04-24T15:23:56+05:30",
+                  username: "Guest User",
+                  _id: "b249fdd8-aafb-494d-55556e690e36d9c",
+                },
+              ],
+            },
+          ],
         })
       );
     },

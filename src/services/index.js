@@ -15,3 +15,4 @@ export { getDataService } from "./getDataServices/getData.service";
 export { addCommentService } from "./commentsServices/addComment.service";
 export { deleteCommentService } from "./commentsServices/deleteComment.service";
 export { editCommentService } from "./commentsServices/editComment.service";
+export { getCommentsService } from "./commentsServices/getComments.service";
