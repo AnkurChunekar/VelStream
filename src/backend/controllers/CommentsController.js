@@ -3,128 +3,130 @@ import { requiresAuth, formatDate } from "../utils/authUtils";
 import { v4 as uuid } from "uuid";
 
 export const getCommentsHandler = function (schema, request) {
-    const user = requiresAuth.call(this, request);
-    if (user) {
-        return new Response(200, {}, { comments: user.comments });
-    }
-    return new Response(
-        404,
-        {},
-        { errors: ["The user you request does not exist. Not Found error."] }
-    );
+  const user = requiresAuth.call(this, request);
+  if (user) {
+    return new Response(200, {}, { comments: user.comments });
+  }
+  return new Response(
+    404,
+    {},
+    { errors: ["The user you request does not exist. Not Found error."] }
+  );
 };
 
 export const addItemToCommentsHandler = function (schema, request) {
-    const user = requiresAuth.call(this, request);
-    if (user) {
-        const { videoId } = request.params;
-        const { comment } = JSON.parse(request.requestBody);
+  const user = requiresAuth.call(this, request);
+  if (user) {
+    const { videoId } = request.params;
+    const { comment } = JSON.parse(request.requestBody);
 
-        const video = schema.videos.findBy({ _id: videoId }).attrs;
+    const video = schema.videos.findBy({ _id: videoId }).attrs;
 
-        const videoComments = user.comments.find(
-            (currComment) => currComment._id === video._id
-        );
-        let updatedComments = "";
-        if (videoComments) {
-            updatedComments = user.comments.map((currComment) => {
-                if (currComment._id === video._id)
-                    currComment.vidComments.push({
-                        _id: uuid(),
-                        ...comment,
-                        updatedAt: formatDate(),
-                    });
-                return currComment;
-            });
-
-            this.db.users.update({ _id: user._id }, { comments: updatedComments });
-        } else
-            user.comments.push({
-                _id: video._id,
-                vidComments: [{ _id: uuid(), ...comment, updatedAt: formatDate() }],
-            });
-
-        return new Response(201, {}, { comments: user.comments });
-    }
-    return new Response(
-        404,
-        {},
-        {
-            errors: ["The email you entered is not Registered. Not Found error"],
-        }
+    const videoComments = user.comments.find(
+      (currComment) => currComment._id === video._id
     );
+    let updatedComments = "";
+    if (videoComments) {
+      updatedComments = user.comments.map((currComment) => {
+        if (currComment._id === video._id)
+          currComment.vidComments.push({
+            _id: uuid(),
+            ...comment,
+            updatedAt: formatDate(),
+          });
+        return currComment;
+      });
+
+      this.db.users.update({ _id: user._id }, { comments: updatedComments });
+    } else
+      user.comments.push({
+        _id: video._id,
+        vidComments: [{ _id: uuid(), ...comment, updatedAt: formatDate() }],
+      });
+
+    return new Response(201, {}, { comments: user.comments });
+  }
+  return new Response(
+    404,
+    {},
+    {
+      errors: ["The email you entered is not Registered. Not Found error"],
+    }
+  );
 };
 
 export const removeItemFromCommentsHandler = function (schema, request) {
-    const user = requiresAuth.call(this, request);
-    if (user) {
-        const { videoId } = request.params;
+  const user = requiresAuth.call(this, request);
+  if (user) {
+    const { videoId } = request.params;
 
-        const { comment } = JSON.parse(request.requestBody);
+    const { comment } = JSON.parse(request.requestBody);
 
-        const video = schema.videos.findBy({ _id: videoId }).attrs;
+    const video = schema.videos.findBy({ _id: videoId }).attrs;
 
-        const updatedComments = user.comments.map((currComment) => {
-            if (currComment._id === video._id) {
-                const newVidComments = currComment.vidComments.filter(
-                    (vidComment) => vidComment._id !== comment._id
-                );
+    const updatedComments = user.comments.map((currComment) => {
+      if (currComment._id === video._id) {
+        const newVidComments = currComment.vidComments.filter(
+          (vidComment) => vidComment._id !== comment._id
+        );
 
-                return { ...currComment, vidComments: newVidComments };
-            }
+        return { ...currComment, vidComments: newVidComments };
+      }
 
-            return currComment;
-        });
+      return currComment;
+    });
 
-        this.db.users.update({ _id: user._id }, { comments: updatedComments });
+    this.db.users.update({ _id: user._id }, { comments: updatedComments });
 
-        return new Response(200, {}, { comments: updatedComments });
+    return new Response(201, {}, { comments: updatedComments });
+  }
+  return new Response(
+    404,
+    {},
+    {
+      errors: ["The email you entered is not Registered. Not Found error"],
     }
-    return new Response(
-        404,
-        {},
-        {
-            errors: ["The email you entered is not Registered. Not Found error"],
-        }
-    );
+  );
 };
 
 export const updateCommentHandler = function (schema, request) {
-    const user = requiresAuth.call(this, request);
+  const user = requiresAuth.call(this, request);
 
-    if (user) {
-        const { videoId } = request.params;
+  if (user) {
+    const { videoId } = request.params;
 
-        const { comment } = JSON.parse(request.requestBody);
+    const { comment } = JSON.parse(request.requestBody);
 
-        const video = schema.videos.findBy({ _id: videoId }).attrs;
+    const video = schema.videos.findBy({ _id: videoId }).attrs;
 
-        const updatedComments = user.comments.map((currComment) => {
-            if (currComment._id === video._id) {
-                const newVidComments = currComment.vidComments.map((vidComment) => {
-                    if (vidComment._id === comment._id) {
-                        return {
-                            ...vidComment,
-                            title: comment.title,
-                            description: comment.description,
-                        };
-                    }
+    const updatedComments = user.comments.map((currComment) => {
+      if (currComment._id === video._id) {
+        const newVidComments = currComment.vidComments.map((vidComment) => {
+          if (vidComment._id === comment._id) {
+            return {
+              ...vidComment,
+              text: comment.text,
+              username: comment.username,
+            };
+          }
 
-                    return vidComment;
-                });
-                return { ...currComment, vidComments: newVidComments };
-            }
-            return currComment;
+          return vidComment;
         });
-        this.db.users.update({ _id: user._id }, { comments: updatedComments });
+        return { ...currComment, vidComments: newVidComments };
+      }
+      return currComment;
+    });
 
-        return new Response(200, {}, { comments: updatedComments });
+    console.log(updatedComments);
+    this.db.users.update({ _id: user._id }, { comments: updatedComments });
+
+    return new Response(201, {}, { comments: updatedComments });
+  }
+  return new Response(
+    404,
+    {},
+    {
+      errors: ["The email you entered is not Registered. Not Found error"],
     }
-    return new Response(
-        404,
-        {},
-        {
-            errors: ["The email you entered is not Registered. Not Found error"],
-        }
-    );
+  );
 };

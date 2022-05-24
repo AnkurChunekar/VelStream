@@ -73,6 +73,7 @@
 
 .video-comments {
   width: 100%;
+  margin-bottom: 50px;
 }
 
 .video-comments .add-comment-box {
@@ -100,8 +101,31 @@
   width: 35px;
 }
 
+.comment-card {
+  position: relative;
+}
+
 .comment-card .input-wrapper {
   width: auto;
+}
+
+.comment-card .comment-menu {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background-color: white;
+  color: black;
+  padding: 1rem;
+  right: 4px;
+  align-items: flex-start;
+  top: 100%;
+  row-gap: 0.5rem;
+  z-index: 5;
+  border-radius: 5px;
+}
+
+.comment-card .comment-menu button:hover {
+   text-decoration: underline;
 }
 
 @media screen and (max-width: 1440px) {

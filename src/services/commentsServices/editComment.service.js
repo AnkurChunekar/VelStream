@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 import axios from "axios";
 
-export const deleteCommentService = async (
+export const editCommentService = async (
   token,
   videoId,
   comment,
@@ -9,16 +9,17 @@ export const deleteCommentService = async (
 ) => {
   try {
     const response = await axios.post(
-      `/api/user/comments/delete/${videoId}`,
+      `/api/user/comments/update/${videoId}`,
       { comment },
       { headers: { authorization: token } }
     );
+
     if (response.status === 201) {
       commentsDispatch({
         type: "UPDATE_COMMENTS",
         payload: response.data.comments,
       });
-      toast.success("Comment Deleted successfully");
+      toast.success("Comment Edited successfully");
     }
   } catch (error) {
     console.error(error);

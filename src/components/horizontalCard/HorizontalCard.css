@@ -6,8 +6,7 @@
   cursor: pointer;
 }
 
-.horizontal-card:hover,
-.comment-card:hover {
+.horizontal-card:hover {
   background-color: var(--dt-light-bg);
 }
 

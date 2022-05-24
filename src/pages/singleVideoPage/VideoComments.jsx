@@ -1,39 +1,109 @@
 import { useState } from "react";
 import { useAuth, useComments } from "../../context";
-import { addCommentService, deleteCommentService } from "../../services";
+import {
+  addCommentService,
+  deleteCommentService,
+  editCommentService,
+} from "../../services";
 import userAvatar from "../../assets/user-avatar.jpg";
 import { toast } from "react-toastify";
 
-/* 
-      <div className="comment-card">
-        <div className="input-wrapper flex ai-start cgap-1rem m-xxs mrl0">
-          <img src={userAvatar} alt="user avatar" className="user-avatar" />
-          <div className="flex flex-column ">
-            <p className="gray-text">Guest User</p>
-            <p>This is a great video. I Like movies.</p>
-          </div>
-        </div>
-      </div>
+function CommentCard({ commentData, token, commentsDispatch, videoId }) {
+  const [editMode, setEditMode] = useState(false);
+  const [editText, setEditText] = useState("");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [currentCommentId, setCurrentCommentId] = useState("");
 
-*/
-
-function CommentCard({ comment, token, commentsDispatch, videoId }) {
   const deleteCommentHandler = () => {
-    console.log("handler");
-    deleteCommentService(token, videoId, comment, commentsDispatch);
+    setIsMenuOpen(false);
+    deleteCommentService(token, videoId, commentData, commentsDispatch);
+  };
+
+  const updateCommentHandler = () => {
+    if (token) {
+      if (editText.trim() !== "" && editText !== commentData.text) {
+        editCommentService(
+          token,
+          videoId,
+          { ...commentData, text: editText},
+          commentsDispatch
+        );
+
+        setEditText("");
+      }
+    } else {
+      toast.error("Please Login");
+    }
+    setEditMode(false);
   };
 
   return (
     <div className="comment-card">
-      <div className="input-wrapper flex ai-center cgap-1rem m-xxs mrl0">
+      <div className="input-wrapper flex ai-start cgap-1rem m-xxs mrl0">
         <img src={userAvatar} alt="user avatar" className="user-avatar" />
-        <div className="flex flex-column ">
-          <p className="gray-text">{comment.name}</p>
-          <p>{comment.comment}</p>
+        <div className="flex flex-column w-100pc">
+          <p className="gray-text">{commentData.username}</p>
+          {editMode ? (
+            <div className="input-wrapper flex flex-column ai-center rgap-1rem">
+              <input
+                value={editText}
+                onChange={(e) => setEditText(e.target.value)}
+                type="text"
+                id="note-title"
+                placeholder="Add a public comment..."
+                name="title"
+                className="input p-xxs m-xxxs m-rl0 bd-rad-sm"
+              />
+              <div className="flex ai-center jc-end c-gap-1rem w-100pc">
+                <button
+                  onClick={() => setEditMode(false)}
+                  className="btn btn-secondary"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={updateCommentHandler}
+                  className="btn btn-primary"
+                >
+                  Comment
+                </button>
+              </div>
+            </div>
+          ) : (
+            <p>{commentData.text}</p>
+          )}
         </div>
-        <button onClick={deleteCommentHandler} className="delete-btn">
-          <i className="fa-solid fa-trash"></i>
-        </button>
+
+        {editMode ? null : (
+          <button
+            onClick={() => {
+              setIsMenuOpen((prev) => !prev);
+              setCurrentCommentId(commentData._id);
+            }}
+            className="delete-btn"
+          >
+            <i className="fa-solid fa-ellipsis-vertical"></i>
+          </button>
+        )}
+
+        {/* Menu */}
+        {isMenuOpen && commentData._id === currentCommentId ? (
+          <div className="comment-menu">
+            <button
+              onClick={() => {
+                setIsMenuOpen(false);
+                setEditMode(true);
+                setEditText(commentData.text);
+              }}
+              className="btn-unset"
+            >
+              Edit
+            </button>
+            <button onClick={deleteCommentHandler} className="btn-unset">
+              Delete
+            </button>
+          </div>
+        ) : null}
       </div>
     </div>
   );
@@ -58,7 +128,7 @@ export function VideoComments({ videoId }) {
         addCommentService(
           token,
           videoId,
-          { comment: inputText, name: `${user.firstName} ${user.lastName}` },
+          { text: inputText, username: `${user.firstName} ${user.lastName}` },
           commentsDispatch
         );
         setInputText("");
@@ -109,7 +179,7 @@ export function VideoComments({ videoId }) {
                 videoId={videoId}
                 token={token}
                 commentsDispatch={commentsDispatch}
-                comment={item}
+                commentData={item}
                 key={item._id}
               />
             ))
