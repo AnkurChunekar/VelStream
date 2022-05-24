@@ -3,9 +3,8 @@ import { useAuth } from "../../context";
 import "./Drawer.css";
 
 export function Drawer() {
-  const {
-    authState: { user },
-  } = useAuth();
+  const { authState } = useAuth();
+  const user = authState.user || JSON.parse(localStorage.getItem("user"));
   const { pathname } = useLocation();
 
   const inSingleVideoPage = () => {

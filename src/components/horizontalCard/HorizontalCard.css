@@ -31,7 +31,8 @@
   flex-grow: 2;
 }
 
-.horizontal-card .delete-btn {
+.horizontal-card .delete-btn,
+.comment-card .delete-btn {
   color: inherit;
   margin-left: auto;
   align-self: flex-start;

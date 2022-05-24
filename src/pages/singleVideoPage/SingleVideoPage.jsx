@@ -8,16 +8,17 @@ import {
   watchLaterToggleHandler,
 } from "../../helpers";
 import { Drawer, PlaylistModal, CircularLoader } from "../../components";
-import { VideoNotes } from "./VideoNotes";
+import { VideoComments } from "./VideoComments";
 import "./SingleVideoPage.css";
 
 export function SingleVideoPage() {
   const [videoData, setVideoData] = useState(false);
   const [isPlaylistModalVisible, setIsPlaylistModalVisible] = useState(false);
   const { videoID } = useParams();
-  const {
-    authState: { user, token },
-  } = useAuth();
+
+  const { authState } = useAuth();
+  const user = authState.user || JSON.parse(localStorage.getItem("user"));
+  const token = authState.token || localStorage.getItem("token");
 
   const {
     likeState: { likeData },
@@ -162,9 +163,11 @@ export function SingleVideoPage() {
               />
               <span className="m-xxs m-tb0"> {videoData.channelName} </span>
             </div>
+
+
+          <VideoComments videoId={videoData._id} />
           </div>
 
-          <VideoNotes />
         </div>
       ) : (
         <div className="loader-container">

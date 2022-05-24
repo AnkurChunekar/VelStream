@@ -6,9 +6,8 @@ import "./Navbar.css";
 export function Navbar({ searchInput, setSearchInput }) {
   const { pathname } = useLocation();
   const [isHamMenuVisible, setIsHamMenuVisible] = useState(false);
-  const {
-    authState: { user },
-  } = useAuth();
+  const { authState } = useAuth();
+  const user = authState.user || JSON.parse(localStorage.getItem("user"));
 
   return (
     <>

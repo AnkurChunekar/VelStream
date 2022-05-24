@@ -38,6 +38,13 @@ import {
   getWatchLaterVideosHandler,
   removeItemFromWatchLaterVideos,
 } from "./backend/controllers/WatchLaterController";
+import {
+  getCommentsHandler,
+  addItemToCommentsHandler,
+  removeItemFromCommentsHandler,
+  updateCommentHandler,
+} from "./backend/controllers/CommentsController";
+
 export function makeServer({ environment = "development" } = {}) {
   return new Server({
     serializers: {
@@ -53,6 +60,7 @@ export function makeServer({ environment = "development" } = {}) {
       history: Model,
       playlist: Model,
       watchlater: Model,
+      comments: Model,
     },
 
     // Runs on the start of the server
@@ -69,6 +77,36 @@ export function makeServer({ environment = "development" } = {}) {
           watchlater: [],
           history: [],
           playlists: [],
+          comments: [
+            {
+              _id: "Wo5dMEP_BbI02",
+              vidComments: [
+                {
+                  text: "hello",
+                  updatedAt: "2022-05-24T15:23:56+05:30",
+                  username: "Guest User",
+                  _id: "b249fdd8-aafb-494d-94f1-76e690e36d9c",
+                },
+                {
+                  text: "Spiderman is awesome",
+                  updatedAt: "2022-05-24T15:23:56+05:30",
+                  username: "Raj malhotra",
+                  _id: "b269gddd8daf5-494d-94f1-76e690e36d9c",
+                },
+              ],
+            },
+            {
+              _id: "Wo5dMEP_BbI01",
+              vidComments: [
+                {
+                  text: "Batman is the best!",
+                  updatedAt: "2022-04-24T15:23:56+05:30",
+                  username: "Guest User",
+                  _id: "b249fdd8-aafb-494d-55556e690e36d9c",
+                },
+              ],
+            },
+          ],
         })
       );
     },
@@ -131,6 +169,18 @@ export function makeServer({ environment = "development" } = {}) {
         removeVideoFromHistoryHandler.bind(this)
       );
       this.delete("/user/history/all", clearHistoryHandler.bind(this));
+
+      // comments routes (private)
+      this.get("user/comments", getCommentsHandler.bind(this));
+      this.post("/user/comments/:videoId", addItemToCommentsHandler.bind(this));
+      this.post(
+        "/user/comments/delete/:videoId",
+        removeItemFromCommentsHandler.bind(this)
+      );
+      this.post(
+        "/user/comments/update/:videoId",
+        updateCommentHandler.bind(this)
+      );
     },
   });
 }

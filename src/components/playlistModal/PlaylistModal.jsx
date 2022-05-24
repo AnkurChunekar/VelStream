@@ -46,7 +46,7 @@ export function PlaylistModal({
     setCreatePlaylistInpVisible(false);
   };
 
-  const handleCreatePlaylistClick = () => {
+  const handleCreatePlaylistClick = (e) => {
     if (!createPlaylistInpVisible) {
       setCreatePlaylistInpVisible(true);
     }
@@ -105,8 +105,8 @@ export function PlaylistModal({
   };
 
   return (
-    <div className="playlist-modal flex flex-center">
-      <div className="modal m-md1 p-xs">
+    <div onClick={handleClosePlaylistModalClick} className="playlist-modal flex flex-center">
+      <div onClick={(e) => e.stopPropagation()} className="modal m-md1 p-xs">
         <header className="p-xs">
           <div className="modal-title fs-4"> Save to... </div>
           <button
@@ -157,6 +157,7 @@ export function PlaylistModal({
               type="text"
               id="name"
               placeholder="My Playlist"
+              autoFocus
               onChange={handleNewPlaylistDataChange}
               value={newPlaylistData.title}
             />
