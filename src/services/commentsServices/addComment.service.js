@@ -13,7 +13,6 @@ export const addCommentService = async (
       { comment },
       { headers: { authorization: token } }
     );
-    console.log(response.data.comments);
     if (response.status === 201) {
       commentsDispatch({
         type: "UPDATE_COMMENTS",

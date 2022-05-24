@@ -117,7 +117,6 @@ export const updateCommentHandler = function (schema, request) {
       return currComment;
     });
 
-    console.log(updatedComments);
     this.db.users.update({ _id: user._id }, { comments: updatedComments });
 
     return new Response(201, {}, { comments: updatedComments });
