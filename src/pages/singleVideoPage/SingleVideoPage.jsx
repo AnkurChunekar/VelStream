@@ -8,7 +8,7 @@ import {
   watchLaterToggleHandler,
 } from "../../helpers";
 import { Drawer, PlaylistModal, CircularLoader } from "../../components";
-import { VideoNotes } from "./VideoNotes";
+import { VideoComments } from "./VideoComments";
 import "./SingleVideoPage.css";
 
 export function SingleVideoPage() {
@@ -162,9 +162,11 @@ export function SingleVideoPage() {
               />
               <span className="m-xxs m-tb0"> {videoData.channelName} </span>
             </div>
+
+
+          <VideoComments videoId={videoData._id} />
           </div>
 
-          <VideoNotes />
         </div>
       ) : (
         <div className="loader-container">

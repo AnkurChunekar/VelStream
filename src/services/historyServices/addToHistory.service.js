@@ -26,8 +26,6 @@ const addToHistoryService = async ({
           type: "UPDATE_HISTORY",
           payload: response.data.history,
         });
-      } else {
-        throw new Error(`Error Occured!, Please Try Again`);
       }
     } catch (error) {
       console.error(error);

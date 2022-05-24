@@ -11,6 +11,7 @@
 
 .single-video-page {
   width: 100%;
+  height: max-content;
   display: flex;
   justify-content: space-evenly;
 }
@@ -70,12 +71,17 @@
 
 /*  Video Notes */
 
-.video-notes {
-  width: 20%;
+.video-comments {
+  width: 100%;
 }
 
-.video-notes textarea,
-.video-notes input {
+.video-comments .add-comment-box {
+  border-bottom: solid 1px gray;
+  padding: 1rem 0.5rem;
+}
+
+.video-comments textarea,
+.video-comments input {
   background-color: var(--dt-light-bg);
   color: inherit;
   width: 100%;
@@ -83,15 +89,19 @@
   border: solid 1px var(--dt-light-bg);
 }
 
-.video-notes textarea:focus,
-.video-notes input:focus {
+.video-comments textarea:focus,
+.video-comments input:focus {
   box-shadow: none;
 }
 
-.video-notes textarea {
-  resize: none;
-  height: 15rem;
-  overflow: auto;
+.video-comments .user-avatar {
+  border-radius: var(--round-radius);
+  height: 35px;
+  width: 35px;
+}
+
+.comment-card .input-wrapper {
+  width: auto;
 }
 
 @media screen and (max-width: 1440px) {
@@ -116,10 +126,10 @@
 
   .single-video-page {
     flex-direction: column;
-    margin-top: 350px;
+    /* margin-top: 350px; */
   }
 
-  .video-notes {
+  .video-comments {
     width: 100%;
     padding: 2rem;
   }
@@ -133,7 +143,7 @@
 
   .single-video-page {
     flex-direction: column;
-    margin-top: 270px;
+    /* margin-top: 270px; */
   }
 
   .nav-drawer {
@@ -147,6 +157,6 @@
   }
 
   .single-video-page {
-    margin-top: 90px;
+    /* margin-top: 90px; */
   }
 }
