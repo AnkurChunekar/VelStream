@@ -15,7 +15,7 @@ export const getHistoryVideosHandler = function (schema, request) {
   const user = requiresAuth.call(this, request);
   try {
     if (!user) {
-      new Response(
+      return new Response(
         404,
         {},
         {
@@ -54,16 +54,14 @@ export const addVideoToHistoryHandler = function (schema, request) {
       );
     }
     const { video } = JSON.parse(request.requestBody);
+
     if (user.history.some((item) => item.id === video.id)) {
-      return new Response(
-        409,
-        {},
-        {
-          errors: ["The video is already in your history"],
-        }
-      );
+      let filteredHistory = user.history.filter((item) => item.id !== video.id);
+      filteredHistory.unshift(video);
+      return new Response(201, {}, { history: filteredHistory });
     }
-    user.history.push(video);
+
+    user.history.unshift(video);
     return new Response(201, {}, { history: user.history });
   } catch (error) {
     return new Response(
