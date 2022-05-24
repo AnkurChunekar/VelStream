@@ -38,6 +38,13 @@ import {
   getWatchLaterVideosHandler,
   removeItemFromWatchLaterVideos,
 } from "./backend/controllers/WatchLaterController";
+import {
+  getCommentsHandler,
+  addItemToCommentsHandler,
+  removeItemFromCommentsHandler,
+  updateCommentHandler,
+} from "./backend/controllers/CommentsController";
+
 export function makeServer({ environment = "development" } = {}) {
   return new Server({
     serializers: {
@@ -53,6 +60,7 @@ export function makeServer({ environment = "development" } = {}) {
       history: Model,
       playlist: Model,
       watchlater: Model,
+      comments: Model,
     },
 
     // Runs on the start of the server
@@ -69,6 +77,7 @@ export function makeServer({ environment = "development" } = {}) {
           watchlater: [],
           history: [],
           playlists: [],
+          comments: [],
         })
       );
     },
@@ -131,6 +140,18 @@ export function makeServer({ environment = "development" } = {}) {
         removeVideoFromHistoryHandler.bind(this)
       );
       this.delete("/user/history/all", clearHistoryHandler.bind(this));
+
+      // comments routes (private)
+      this.get("user/comments", getCommentsHandler.bind(this));
+      this.post("/user/comments/:videoId", addItemToCommentsHandler.bind(this));
+      this.post(
+        "/user/comments/delete/:videoId",
+        removeItemFromCommentsHandler.bind(this)
+      );
+      this.post(
+        "/user/comments/update/:videoId",
+        updateCommentHandler.bind(this)
+      );
     },
   });
 }
