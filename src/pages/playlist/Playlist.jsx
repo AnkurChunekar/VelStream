@@ -4,9 +4,9 @@ import { deletePlaylistService } from "../../services";
 
 export function Playlist({ title, videos = 0, playlistId }) {
   const navigate = useNavigate();
-  const {
-    authState: { token },
-  } = useAuth();
+
+  const { authState } = useAuth();
+  const token = authState.token || localStorage.getItem("token");
   const { playlistDispatch } = usePlaylist();
 
   const handleDeletePlaylistClick = (e) => {

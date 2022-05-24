@@ -15,9 +15,10 @@ export function SingleVideoPage() {
   const [videoData, setVideoData] = useState(false);
   const [isPlaylistModalVisible, setIsPlaylistModalVisible] = useState(false);
   const { videoID } = useParams();
-  const {
-    authState: { user, token },
-  } = useAuth();
+
+  const { authState } = useAuth();
+  const user = authState.user || JSON.parse(localStorage.getItem("user"));
+  const token = authState.token || localStorage.getItem("token");
 
   const {
     likeState: { likeData },

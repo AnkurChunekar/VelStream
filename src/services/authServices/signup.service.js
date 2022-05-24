@@ -15,6 +15,7 @@ export const signupService = async (userData, authDispatch, navigate) => {
     switch (response.status) {
       case 201:
         localStorage.setItem("token", response.data.encodedToken);
+        localStorage.setItem("user", JSON.stringify(response.data.createdUser));
         authDispatch({
           type: "SIGN_UP",
           payload: {

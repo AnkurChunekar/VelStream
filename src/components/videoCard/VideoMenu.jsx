@@ -14,9 +14,9 @@ export function VideoMenu({
 }) {
   const navigate = useNavigate();
 
-  const {
-    authState: { user, token },
-  } = useAuth();
+  const { authState } = useAuth();
+  const user = authState.user || JSON.parse(localStorage.getItem("user"));
+  const token = authState.token || localStorage.getItem("token");
 
   const {
     watchLaterState: { watchLaterData },

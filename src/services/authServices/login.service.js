@@ -19,6 +19,7 @@ export const loginService = async ({
     switch (response.status) {
       case 200:
         localStorage.setItem("token", response.data.encodedToken);
+        localStorage.setItem("user", JSON.stringify(response.data.foundUser));
         authDispatch({
           type: "LOGIN",
           payload: {

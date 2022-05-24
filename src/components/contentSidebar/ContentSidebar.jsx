@@ -29,9 +29,6 @@ export function ContentSidebar({ pageTitle, sidebarBanner, videoCount }) {
       </div>
 
       <h2 className="fw-400 m-xxs m-rl0"> {pageTitle} </h2>
-      <div className="gray-text fs-6 m-xxs m-rl0">
-        Updated on March 13, 2003
-      </div>
       <div className="divider m-xxs m-rl0"></div>
       <div className="flex ai-center m-s m-rl0">
         <img

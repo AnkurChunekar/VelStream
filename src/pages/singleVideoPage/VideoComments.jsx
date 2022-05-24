@@ -114,9 +114,10 @@ function CommentCard({ commentData, token, commentsDispatch, videoId, user }) {
 export function VideoComments({ videoId }) {
   const [inputText, setInputText] = useState("");
   const { commentsDispatch } = useComments();
-  const {
-    authState: { user, token },
-  } = useAuth();
+  
+  const { authState } = useAuth();
+  const user = authState.user || JSON.parse(localStorage.getItem("user"));
+  const token = authState.token || localStorage.getItem("token");
 
   const {
     commentsState: { comments },
